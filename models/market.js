@@ -18,7 +18,7 @@ module.exports = Good;
 
 //创建新用户
 Good.create = function(){
-	ctime = new Data();
+	ctime = new Date();
 	ctime = Math.ceil(ctime.getTime()/1000);
 	data = {
 		'uid' = this.uid,

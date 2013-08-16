@@ -13,7 +13,7 @@ module.exports = User;
 
 //创建新用户
 User.create = function(){
-	ctime = new Data();
+	ctime = new Date();
 	ctime = Math.ceil(ctime.getTime()/1000);
 	data = {
 		'username':this.username,
