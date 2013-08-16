@@ -1,0 +1,114 @@
+var mysql = require('mysql')
+	,dbConnInfo = {
+		'host': '127.0.0.1',
+		'database': 'cpc',
+		'port': '3306',
+		'user': 'root',
+		'password': ''
+	};
+var conn = mysql.createConnection(dbConnInfo);
+
+
+//插入单条数据 insert_data：数据json对象 
+var insert_one = function(insert_data,table_name){
+	var cmd = "INSERT INTO "+table_name+" SET";
+	for(var key in insert_data){
+		cmd+=(" "+key+"='"+insert_data[key]+"',");
+	}
+	cmd = cmd.substring(0,cmd.length-1)
+	conn.query(cmd,function(err,rs,fields){
+		if (err) {
+			return false;
+		};
+		return rs;
+	})
+
+	conn.end();
+}
+
+//删除一条或多条数据 ids：number or string 如果是number那么 删除单条数据  如果是string那么 删除多条数据
+var delete_by_id = function(ids,table_name){
+	var cmd = "";
+	if (typeof(ids) == Number) {
+		cmd = "DELETE  FROM " + table_name + " WHERE " + "id=" + ids; 
+	}else if(typeof(ids) == String){
+		cmd = 'DELETE  FROM ' + TEST_TABLE + ' WHERE ' + 'id' + ' IN' + '(' + ids + ')';
+	}else{
+		return "input type error..."
+	}
+	conn.query(cmd,function(err,rs,fields){
+		if (err) {
+			return false;
+		};
+		return rs;
+	})
+
+	conn.end();
+}
+
+//更新一条数据
+var update_by_id = function(update_data,id,table_name){
+
+	var cmd = "UPDATE " + table_name+" set";
+	for(var key in update_data){
+		cmd+=(" "+key+"='"+update_data[key]+"',");
+	}
+	cmd = cmd.substring(0,cmd.length-1)
+	cmd+=" WHERE id= "+id;
+
+	conn.query(cmd,function(err,rs,fields){
+		if (err) {
+			return false;
+		};
+		return rs;
+	})
+
+	conn.end();
+}
+
+//根据id查询数据
+var select_by_id = function(id,table_name){
+	var cmd = "SELECT * FROM " + table_name + " WHERE id= " + id;
+
+	conn.query(cmd,function(err,rs,fields){
+		if (err) {
+			return false;
+		};
+		return rs;
+	})
+
+	conn.end();
+}
+
+//查询数据段 begin 开始id length 长度
+var select_with_count = function(begin,length,table_name){
+	var cmd = "SELECT * FROM " + table_name + " LIMIT " + begin +","+length；
+
+	conn.query(cmd,function(err,rs,fields){
+		if (err) {
+			return false;
+		};
+		return rs;
+	})
+	
+	conn.end();
+}
+
+//自由query 给用户自己写query的东东 query是查询字符串
+var query = function(query){
+	conn.query(query,function(err,rs,fields){
+		if (err) {
+			return false;
+		};
+		return rs;
+	})
+}
+
+module.exports = {
+	INSERT_ONE:insert_one,
+	UPDATE_BY_ID:update_by_id,
+	SELECT_BY_ID:select_by_id,
+	SELECT_WITH_COUNT:select_with_count,
+	DELETE_BY_ID:delete_by_id,
+	QUERY:query
+}
