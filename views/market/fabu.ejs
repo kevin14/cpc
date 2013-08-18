@@ -1,0 +1,59 @@
+<% include ../header.ejs %>
+<link rel="stylesheet" type="text/css" href="http://localhost:3000/style/market/fabu.css" />
+<div id="main">
+    <form action="fabu/fabu_insert" class="fabu_form" method="POST">
+        <div class="input-wrapper">
+            <label class="label_gname" for="wanted">供求：</label>
+            <label>
+                <input type="radio" value="0" title="供求" id="wanted" name="wanted"/>
+                转让
+            </label>
+            <label>
+                <input type="radio" value="1" title="供求" id="wanted" name="wanted"/>
+                求购
+            </div>
+        </label>
+        <div class="input-wrapper">
+            <label class="label_gname" for="gname">标题：</label>
+            <input type="text" class="input long" id="gname" name="gname"/>
+        </div>
+        <div class="input-wrapper">
+            <label class="label_gdesc" for="gdesc">描述：</label>
+            <textarea id="gdesc" name="gdesc"></textarea>
+        </div>
+        <div class="input-wrapper">
+            <label class="label_classify" for="classify">分类：</label>
+            <select class="input" type="text" id="classify" name="classify">
+                <option>华东理工大学</option>
+                <option>华东理工大学</option>
+                <option>华东理工大学</option>
+                <option>华东理工大学</option>
+                <option>华东理工大学</option>
+            </select>
+        </div>
+        <div class="input-wrapper">
+            <label class="label_gprice" for="gprice">价格：</label>
+            <input class="input" type="text" id="gprice" name="gprice"/>
+            &nbsp;&nbsp;元
+        </div>
+        <div class="input-wrapper">
+            <label class="label_mobile" for="mobile">联系电话：</label>
+            <input class="input" type="text" id="mobile" name="mobile"/>
+        </div>
+        <div class="input-wrapper">
+            <label class="label_place" for="place">学校：</label>
+            <select class="input" type="text" id="place" name="place" >
+                <option>华东理工大学</option>
+                <option>华东理工大学</option>
+                <option>华东理工大学</option>
+                <option>华东理工大学</option>
+                <option>华东理工大学</option>
+            </select>
+        </div>
+        <div class="input-wrapper">
+            <label class="label_pic" for="pic">图片：</label>
+            <input class="input" type="file" id="pic" name="pic"/>
+        </div>
+        <input type="submit" id="form_submit"  value="发布"/>
+    </form>
+</div>

@@ -21,15 +21,15 @@ Good.create = function(){
 	ctime = new Date();
 	ctime = Math.ceil(ctime.getTime()/1000);
 	data = {
-		'uid' = this.uid,
-		'gname' = this.gname,
-		'gdesc' = this.gdesc,//描述
-		'gprice' = this.gprice,
-		'mobile' = this.mobile,
-		'status' = this.status,//状态 未售出 已售出等
-		'place' = this.place,
-		'browser_num' = this.browser_num,//浏览数
-		'classify' = this.classify
+		'uid' : this.uid,
+		'gname' : this.gname,
+		'gdesc' : this.gdesc,//描述
+		'gprice' : this.gprice,
+		'mobile' : this.mobile,
+		'status' : this.status,//状态 未售出 已售出等
+		'place' : this.place,
+		'browser_num' : this.browser_num,//浏览数
+		'classify' : this.classify
 	}
 	db.insert_one(data,this.table_name);
 }

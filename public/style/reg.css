@@ -1,0 +1,23 @@
+.main{height: 100%;width: 1000px;margin: 0 auto;}
+.main .logo_area{width: 625px;height:100%;float: left;background-image:url("http://localhost:3000/images/reg_bg.png");position: relative;z-index: -1;}
+.main .reg_area{height:100%;width: 375px;float: left;}
+.reg_footer{position: fixed;bottom: 0px;height: 30px;width: 100%;background-color: #fff;box-shadow: 0 0 20px #888;}
+
+.main .reg_area .reg_form_wrapper{width: 270px;height:350px;margin: 130px 0 0 30px;position: relative;}
+.reg_form_wrapper span{text-shadow: 1px 1px 0 #fff;}
+.reg_form_wrapper .cpc{font-size: 36px;font-family: '幼圆';line-height: 36px;color: #000;}
+.reg_form_wrapper .cpc_intro{font-size: 12px;color: #808080;display:block;position: absolute;top :21px; left:110px;}
+.reg_form_wrapper .reg_form{margin-top: 10px;}
+
+.reg_form_wrapper .reg_form input{width: 230px;height: 26px;margin-top: 17px;outline-color: #0969d5;box-shadow:0px 0px 3px #999999 inset;background-color: #b7b7b7;color: #ffffff;border: 1px solid #999999;border-radius: 2px;}
+.reg_form_wrapper .reg_form label{position: absolute;left:10px;color:#fff; }
+.reg_form .label_uname{top:66px;}
+.reg_form .label_umail{top:112px;}
+.reg_form .label_upsw{top:157px;}
+.reg_form .label_rupsw{top:202px;}
+.reg_form_wrapper .to_login{font-size: 12px;line-height: 40px;}
+.reg_form_wrapper .to_login a{color:#0969d5;margin-left: 4px;}
+#form_submit{margin:20px 0 0 -14px;width: 100px;height:28px;cursor: pointer;box-shadow: none;border: none;background-color: #E0E0E0;background-image: url("http://localhost:3000/images/icon.png");background-position: -228px -53px;letter-spacing: 5px;font-size: 14px;}
+.main .logo_area img{margin: -15px 0 0 -30px;}
+#vcode{width: 109px;float: left;}
+.vcode{width:111px;height: 28px;background-color: #fff;float: left;margin: 17px 0 0 10px;}

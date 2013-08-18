@@ -83,7 +83,7 @@ var select_by_id = function(id,table_name){
 //查询数据段 begin 开始id length 长度
 var select_with_count = function(begin,length,table_name){
 	conn = mysql.createConnection(dbConnInfo);
-	var cmd = "SELECT * FROM " + table_name + " LIMIT " + begin +","+length；
+	var cmd = "SELECT * FROM " + table_name + " LIMIT " + begin +","+length;
 
 	conn.query(cmd,function(err,rs,fields){
 		conn.end();
@@ -108,7 +108,7 @@ var query = function(query){
 
 var get_count = function(table_name){
 	conn = mysql.createConnection(dbConnInfo);
-	var cmd = "SELECT COUNT(*) FROM "+ table_name；
+	var cmd = "SELECT COUNT(*) FROM "+ table_name;
 	conn.query(query,function(err,rs,fields){
 		conn.end();
 		if (err) {

@@ -1,11 +1,8 @@
 
-/**
- * Module dependencies.
- */
-
 var express = require('express');
-var market = require('./routes/market');
-var club = require('./routes/club');
+var market = require('./controller/market.js');
+var club = require('./controller/club.js');
+var user = require('./controller/user.js');
 var http = require('http');
 var path = require('path');
 
@@ -29,9 +26,16 @@ if ('development' == app.get('env')) {
 
 app.use(app.router);
 
-app.get(/^\/market\/(\w+)(?:\.\.(\w+))?$/,function(req,res){
-	market(req);
-})
+// 在未找到更好的办法之前 路由配置暂时放在app.js文件里
+//公共的route
+app.get('/reg',user.reg);
+app.get('/login',user.login);
+app.get('/change_your_school',user.changeschool);
+
+//属于market的route
+app.get('/market',market.index);
+app.get('/market/fabu',market.fabu);
+app.get('/market/single',market.single);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
