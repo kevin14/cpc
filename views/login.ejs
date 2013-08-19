@@ -8,9 +8,9 @@
             <div class="reg_form_wrapper">
                 <span class="cpc">校园酷</span>
                 <span class="cpc_intro">发现校园最有趣生活</span>
-                <form action="#" class="reg_form">
-                    <label class="label_uname" for="uname">邮箱/用户名</label><input type="text" id="uname"/>
-                    <label class="label_umail" for="umail">密码</label> <input type="text" id="umail"/>
+                <form action="http://localhost:3000/user/login_in" class="reg_form" method="POST">
+                    <label class="label_uname" for="uname">邮箱/用户名</label><input type="text" name="email" id="uname"/>
+                    <label class="label_umail" for="umail">密码</label> <input type="password" name="password" id="umail"/>
                     <input type="submit" id="form_submit"  value="登陆"/>
                 </form>
                 <span class="to_login">还没有校园酷账号?<a>注册</a> or <a>忘记密码啦?</a></span>

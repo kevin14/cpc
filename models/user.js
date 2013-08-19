@@ -1,8 +1,7 @@
 var db = require('./db');
-var data = {},ctime;
+var data = {},ctime,table_name = "cpc_user";
 
 function User(user){
-	this.table_name = "cpc_user";
 	this.username = user.username;
 	this.email = user.email;
 	this.password = user.password;
@@ -36,6 +35,13 @@ User.get_one = function(id){
 	db.select_one(id,this.table_name)
 }
 
+//用户登陆 验证邮箱
+User.user_login = function(email,callback){
+	db.select_by_title("email",email,table_name,function(data){
+		return callback(data);
+	})
+}
+
 //删除用户
 User.remove = function(id){
 	db.delete_by_id(id,this.table_name);
@@ -47,7 +53,7 @@ User.checkEmail = function(email){
 	if (true) {};//TODO 判断
 }
 
-//check username ajax
+//check username ajax 用户注册
 User.checkUsername = function(username){
 
 }

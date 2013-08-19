@@ -8,9 +8,8 @@ var mysql = require('mysql')
 	};
 var conn;
 
-
 //插入单条数据 insert_data：数据json对象 
-var insert_one = function(insert_data,table_name){
+exports.insert_one = function(insert_data,table_name){
 	conn = mysql.createConnection(dbConnInfo);
 	var cmd = "INSERT INTO "+table_name+" SET";
 	for(var key in insert_data){
@@ -27,7 +26,7 @@ var insert_one = function(insert_data,table_name){
 }
 
 //删除一条或多条数据 ids：number or string 如果是number那么 删除单条数据  如果是string那么 删除多条数据
-var delete_by_id = function(ids,table_name){
+exports.delete_by_id = function(ids,table_name){
 	conn = mysql.createConnection(dbConnInfo);
 	var cmd = "";
 	if (typeof(ids) == Number) {
@@ -47,7 +46,7 @@ var delete_by_id = function(ids,table_name){
 }
 
 //更新一条数据
-var update_by_id = function(update_data,id,table_name){
+exports.update_by_id = function(update_data,id,table_name){
 	conn = mysql.createConnection(dbConnInfo);
 
 	var cmd = "UPDATE " + table_name+" set";
@@ -66,8 +65,9 @@ var update_by_id = function(update_data,id,table_name){
 	})
 }
 
+
 //根据id查询数据
-var select_by_id = function(id,table_name){
+exports.select_by_id = function(id,table_name){
 	conn = mysql.createConnection(dbConnInfo);
 	var cmd = "SELECT * FROM " + table_name + " WHERE id= " + id;
 
@@ -80,8 +80,23 @@ var select_by_id = function(id,table_name){
 	})
 }
 
+//根据title查询数据
+exports.select_by_title = function(title,info,table_name,callback){
+	conn = mysql.createConnection(dbConnInfo);
+	var cmd = "SELECT * FROM " + table_name + " WHERE "+title+"=" + info;
+	conn.query(cmd,function(err,rs,fields){
+		if (err) {
+			console.log(err);
+			return false;
+		};
+		return callback(rs);
+		conn.end();
+	})
+}
+
+
 //查询数据段 begin 开始id length 长度
-var select_with_count = function(begin,length,table_name){
+exports.select_with_count = function(begin,length,table_name){
 	conn = mysql.createConnection(dbConnInfo);
 	var cmd = "SELECT * FROM " + table_name + " LIMIT " + begin +","+length;
 
@@ -95,18 +110,20 @@ var select_with_count = function(begin,length,table_name){
 }
 
 //自由query 给用户自己写query的东东 query是查询字符串
-var query = function(query){
+exports.query = function(query){
 	conn = mysql.createConnection(dbConnInfo);
 	conn.query(query,function(err,rs,fields){
-		conn.end();
 		if (err) {
+			console.log("error:"+err)
 			return false;
 		};
+		console.log("result:"+rs)
 		return rs;
 	})
+	conn.end();
 }
 
-var get_count = function(table_name){
+exports.get_count = function(table_name){
 	conn = mysql.createConnection(dbConnInfo);
 	var cmd = "SELECT COUNT(*) FROM "+ table_name;
 	conn.query(query,function(err,rs,fields){
@@ -118,11 +135,10 @@ var get_count = function(table_name){
 	})
 }
 
-module.exports = {
-	insert_one:insert_one,
-	update_by_id:update_by_id,
-	select_by_id:select_by_id,
-	select_with_count:select_with_count,
-	delete_by_id:delete_by_id,
-	query:query
-}
+// module.exports = {
+// 	insert_one:insert_one,
+// 	update_by_id:update_by_id,
+// 	select_by_id:select_by_id,
+// 	select_with_count:select_with_count,
+// 	delete_by_id:delete_by_id
+// }

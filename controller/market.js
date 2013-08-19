@@ -12,6 +12,12 @@ exports.index = function(req,res){
 	renderData = {
 		title: '校园大卖场',
 	}
+	if (req.session.username == undefined) {
+		renderData.username = "未登录";
+	}else{
+		renderData.username = req.session.username;
+	}
+
 	res.render('market/index.ejs',renderData);
 }
 
