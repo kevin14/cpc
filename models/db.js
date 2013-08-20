@@ -9,19 +9,21 @@ var mysql = require('mysql')
 var conn;
 
 //插入单条数据 insert_data：数据json对象 
-exports.insert_one = function(insert_data,table_name){
+exports.insert_one = function(insert_data,table_name,callback){
 	conn = mysql.createConnection(dbConnInfo);
 	var cmd = "INSERT INTO "+table_name+" SET";
 	for(var key in insert_data){
 		cmd+=(" "+key+"='"+insert_data[key]+"',");
 	}
 	cmd = cmd.substring(0,cmd.length-1)
+	cmd += " SELECT LAST_INSERT_ID()";
 	conn.query(cmd,function(err,rs,fields){
-		conn.end();
 		if (err) {
+			console.log(err);
 			return false;
 		};
-		return rs;
+		return callback(rs);
+		conn.end();
 	})
 }
 

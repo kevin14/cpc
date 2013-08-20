@@ -11,7 +11,7 @@ function User(user){
 module.exports = User;
 
 //创建新用户
-User.create = function(){
+User.prototype.create = function(callback){
 	ctime = new Date();
 	ctime = Math.ceil(ctime.getTime()/1000);
 	data = {
@@ -21,7 +21,9 @@ User.create = function(){
 		'ip':this.ip,
 		'ctime':ctime
 	}
-	db.insert_one(data,this.table_name);
+	db.insert_one(data,table_name,function(data){
+		return callback(data);
+	});
 }
 
 

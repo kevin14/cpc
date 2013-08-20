@@ -1,8 +1,7 @@
 var db = require('./db');
-var data = {},ctime;
+var data = {},ctime,table_name = "cpc_userinfo";
 
 function Userinfo(userinfo){
-	this.table_name = "cpc_userinfo";
 	this.uavatar = userinfo.uavatar;
 	this.gender = userinfo.gender;
 	this.schoolid = userinfo.schoolid;//
@@ -11,16 +10,18 @@ function Userinfo(userinfo){
 module.exports = Userinfo;
 
 //创建新用户
-Userinfo.create = function(){
+Userinfo.prototype.create = function(callback){
 	ctime = new Date();
 	ctime = Math.ceil(ctime.getTime()/1000);
 	data = {
-		'uavatar' = this.uid,
-		'gender' = this.gname,
-		'schoolid' = this.gdesc,
-		'ctime' = ctime
+		'uavatar' : this.uavatar,
+		'gender' : this.gender,//1代表男性 2代表女性 3代表未知
+		'schoolid' : this.schoolid,//目前测试阶段都用华东理工大学 也就是id 5
+		'ctime' : ctime
 	}
-	db.insert_one(data,this.table_name);
+	db.insert_one(data,table_name,function(rs){
+		callback(rs);
+	});
 }
 
 //更新
