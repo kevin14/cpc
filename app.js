@@ -36,6 +36,7 @@ app.use(app.router);
 app.get('/reg',user.reg);//注册頁
 app.get('/login',user.login);//登陸頁
 app.post('/user/login_in',user.login_in);//登陸驗證
+app.get('/user/log_out',user.log_out);//登陸驗證
 app.post('/user/reg_in',user.reg_in);//注册
 app.get('/change_your_school',user.changeschool);//切換学校
 

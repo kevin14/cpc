@@ -9,7 +9,8 @@ var Model_user = require('../models/user'),
 exports.login = function(req, res){
 	renderData = {
 		title: '登陆校园酷',
-		username:'未登录'
+		username:'未登录',
+		oUrl:'/login'
 	}
 	res.render('login.ejs',renderData);
 };
@@ -61,7 +62,7 @@ exports.reg_in = function(req,res){
 	});
 }
 
-//登陆
+//登陆 登陆操作得到用户当前页面的url 刷新cookie之后再rediect到之前的页面
 exports.login_in = function(req,res){
 	var md5 = crypto.createHash('md5');
 	var password = md5.update(String(req.body.password)).digest('hex');
@@ -81,5 +82,13 @@ exports.login_in = function(req,res){
 		}
 	});
 	
+}
+
+//登出 登出操作得到用户当前页面的url 删除cookie之后再rediect到之前的页面
+exports.log_out = function(req,res){
+	var originUrl = req.query.oUrl;
+	req.session.username = null;
+	res.clearCookie('username')
+	res.redirect(originUrl);
 }
 
