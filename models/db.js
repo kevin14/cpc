@@ -16,14 +16,14 @@ exports.insert_one = function(insert_data,table_name,callback){
 		cmd+=(" "+key+"='"+insert_data[key]+"',");
 	}
 	cmd = cmd.substring(0,cmd.length-1)
-	cmd += " SELECT LAST_INSERT_ID()";
+	// cmd += " SELECT LAST_INSERT_ID()";
 	conn.query(cmd,function(err,rs,fields){
+		conn.end();
 		if (err) {
 			console.log(err);
 			return false;
 		};
 		return callback(rs);
-		conn.end();
 	})
 }
 
@@ -67,7 +67,6 @@ exports.update_by_id = function(update_data,id,table_name){
 	})
 }
 
-
 //根据id查询数据
 exports.select_by_id = function(id,table_name){
 	conn = mysql.createConnection(dbConnInfo);
@@ -85,7 +84,8 @@ exports.select_by_id = function(id,table_name){
 //根据title查询数据
 exports.select_by_title = function(title,info,table_name,callback){
 	conn = mysql.createConnection(dbConnInfo);
-	var cmd = "SELECT * FROM " + table_name + " WHERE "+title+"=" + info;
+	var cmd = "SELECT * FROM " + table_name + " WHERE "+title+"='" + info +"'";
+	console.log(cmd)
 	conn.query(cmd,function(err,rs,fields){
 		if (err) {
 			console.log(err);
@@ -95,7 +95,6 @@ exports.select_by_title = function(title,info,table_name,callback){
 		conn.end();
 	})
 }
-
 
 //查询数据段 begin 开始id length 长度
 exports.select_with_count = function(begin,length,table_name){
@@ -136,11 +135,3 @@ exports.get_count = function(table_name){
 		return rs;
 	})
 }
-
-// module.exports = {
-// 	insert_one:insert_one,
-// 	update_by_id:update_by_id,
-// 	select_by_id:select_by_id,
-// 	select_with_count:select_with_count,
-// 	delete_by_id:delete_by_id
-// }

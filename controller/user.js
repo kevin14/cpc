@@ -37,6 +37,7 @@ exports.reg_in = function(req,res){
 	//一旦digest被调用 那么md5这个实例将会被清空 因此 每次都需要实例化一下 这的确很令人费解
 	var md5 = crypto.createHash('md5');
 	var password = md5.update(String(req.body.password)).digest('hex');
+
 	var ip = req.connection.remoteAddress;
 	var user = {
 		username:req.body.username,
@@ -50,11 +51,10 @@ exports.reg_in = function(req,res){
 			var info = {
 				uavatar : "http://localhost:3000/media/market/2013/8/avatar.jpg",
 				gender : 3,
-				schoolid : 0//0代表为选择学校
+				schoolid : 0//0代表未选择学校
 			}
 			var userinfo = new Model_user_info(info);
 			userinfo.create(function(rs){
-				console.log(rs);
 				res.redirect('/change_your_school');
 			})
 		};
