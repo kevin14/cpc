@@ -5,15 +5,65 @@ var Model_user = require('../models/user'),
 	Model_user_info = require('../models/userinfo'),
 	crypto = require('crypto');
 
+/*des加密解密算法*/
+var cipheriv = function (en, code, data) {
+    var buf1 = en.update(data, code),
+    	buf2 = en.final();
+    var r = new Buffer(buf1.length + buf2.length);
+    buf1.copy(r); 
+    buf2.copy(r, buf1.length);     
+    return r;
+}
+//DES加密
+var EncryptDES = function (data, key, vi) {      
+	return data = cipheriv(crypto.createCipheriv('des', key, vi), 'utf8', data).toString('base64');
+}
+//DES解密
+var DecryptDES = function (data, key, vi) {                        
+	return cipheriv(crypto.createDecipheriv('des', key, vi), 'base64', data) .toString('utf8');
+}
+/*des加密解密算法end*/
+
 //用户登陆页
 exports.login = function(req, res){
+	// console.log(crypto.createCipheriv('des', '111111').update('222222','utf8','hex').final('hex'));
+	// var crypto = require("crypto");
+	// var plaintext = new Buffer( '675A69675E5A6B5A', 'hex' ).toString( 'binary' );
+	// console.log("plian:"+plaintext);
+	// var key = new Buffer( '675A69675E5A6B5A', 'hex' );
+	// console.log(key)
+	// var iv = new Buffer(8);
+	// iv.fill(0);
+	// var cipher = crypto.createCipheriv("des", key, iv);
+	// cipher.setAutoPadding(false);
+	// var c = cipher.update( plaintext, 'binary', 'hex' );
+	// c+=cipher.final('hex' );
+	// console.log(c);
+
+
+	// console.log("kevin is :")
+	// console.log('kevin14'.toString('base64'))
+	var md5 = crypto.createHash('md5');
+	var password = md5.update('kevin14').digest('hex');
+	console.log(crypto.createCipher('des', 'kevin14').update(password,'utf8').toString('base64'))
+	console.log(crypto.createDecipher('des','kevin14').update('v15XEP1zSid14X8zm4NrJ6tD2ZRnbIlXWnAbZtnXM=','base64').toString('utf8') === password)
+	// console.log(password)
+	// // var key = new Buffer('12311111','binary');
+	// var key = 'helloaaa';
+	// console.log('key is :'+key);
+	// // var vi = new Buffer('12311111','binary');
+	// var vi = '12345678';
+	// console.log('vi is :'+vi);
+	// console.log(EncryptDES(password,key,vi));
+	// console.log(DecryptDES('sFwmFJCfH4YCAjKJGpWp2UFwFhRBQ/wLWq86GNiwAZFHm6HfkYflbQ=1',key,vi) === password);
+
 	renderData = {
 		title: '登陆校园酷',
 		username:'未登录',
 		oUrl:'/login'
 	}
 	res.render('login.ejs',renderData);
-};
+}
 
 //用户注册页
 exports.reg = function(req,res){
@@ -64,6 +114,10 @@ exports.reg_in = function(req,res){
 
 //登陆 登陆操作得到用户当前页面的url 刷新cookie之后再rediect到之前的页面
 exports.login_in = function(req,res){
+
+
+
+
 	var md5 = crypto.createHash('md5');
 	var password = md5.update(String(req.body.password)).digest('hex');
 
