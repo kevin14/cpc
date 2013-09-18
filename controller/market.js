@@ -35,7 +35,13 @@ exports.single = function(req,res){
 //物品发布页
 exports.fabu = function(req,res){
 	renderData = {
-		title:'发布一件物品'
+		title:'发布一件物品',
+		username:'kevin14',
+		oUrl:null
 	}
 	res.render('market/fabu.ejs',renderData);
+}
+
+exports.fabuSubmit = function(req,res){
+	res.send("ok submit succeed!");
 }

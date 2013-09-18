@@ -7,6 +7,8 @@
   },
   "dependencies": {
     "express": "3.3.5",
-    "jade": "*"
+    "jade": "*",
+    "redis": "~0.8.4",
+    "connect-redis": "~1.4.5"
   }
 }

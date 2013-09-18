@@ -85,7 +85,6 @@ exports.select_by_id = function(id,table_name){
 exports.select_by_title = function(title,info,table_name,callback){
 	conn = mysql.createConnection(dbConnInfo);
 	var cmd = "SELECT * FROM " + table_name + " WHERE "+title+"='" + info +"'";
-	console.log(cmd)
 	conn.query(cmd,function(err,rs,fields){
 		if (err) {
 			console.log(err);

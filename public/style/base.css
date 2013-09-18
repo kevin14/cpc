@@ -26,42 +26,14 @@ address,caption,cite,code,dfn,em,strong,th,var {
 ol,ul {
     list-style:none;
 }
-caption,th {
-    text-align:left;
-}
-h1,h2,h3,h4,h5,h6 {
-    font-size:100%;
-    font-weight:normal;
-}
-
-h1{
-    font-size: 18px;
-}
-
-h5{
-    font-size: 12px;
-    font-family: "宋体";
-    color: #999999;
-}
-
-h6{
-    font-family: "宋体";
-    font-size: 12px;
-
-}
-
 q:before,q:after {
     content:'';
 }
-.clear{clear: both;}
-
 a{cursor: pointer;}
-
 .clearfix
 {
 zoom:1;
 }
-
 .clearfix:after
 {
 content:".";
@@ -71,7 +43,6 @@ display:block;
 clear:both;
 font-size: 0;
 }
-
 .top_bar{width:100%;height:40px;background: url("http://localhost:3000/images/top_bar.png") repeat-x;color: #fff;z-index: 12;box-shadow: 0 0 20px #000;}
 .top_bar .top_wrapper{width:1000px;height:40px;margin: 0 auto;}
 .top_bar .top_wrapper .school{width:225px;height:40px;float: left;}

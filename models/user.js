@@ -29,7 +29,7 @@ User.prototype.create = function(callback){
 
 //更新用户信息
 User.update = function(id,data){
-	db.update_by_id(data,id,this.table_name)
+	db.update_by_id(data,id,table_name)
 }
 
 //根据id获取用户信息

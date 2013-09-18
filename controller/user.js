@@ -3,65 +3,49 @@
 */
 var Model_user = require('../models/user'),
 	Model_user_info = require('../models/userinfo'),
-	crypto = require('crypto');
+	crypto = require('crypto'),
+	redis = require('redis');//我将在正式部署的时候安装redis
 
-/*des加密解密算法*/
-var cipheriv = function (en, code, data) {
-    var buf1 = en.update(data, code),
-    	buf2 = en.final();
-    var r = new Buffer(buf1.length + buf2.length);
-    buf1.copy(r); 
-    buf2.copy(r, buf1.length);     
-    return r;
-}
-//DES加密
-var EncryptDES = function (data, key, vi) {      
-	return data = cipheriv(crypto.createCipheriv('des', key, vi), 'utf8', data).toString('base64');
-}
-//DES解密
-var DecryptDES = function (data, key, vi) {                        
-	return cipheriv(crypto.createDecipheriv('des', key, vi), 'base64', data) .toString('utf8');
-}
+/*des加密解密算法 由于此算法很坑爹  暂时不用这个算法*/
+// var cipheriv = function (en, code, data) {
+//     var buf1 = en.update(data, code),
+//     	buf2 = en.final();
+//     var r = new Buffer(buf1.length + buf2.length);
+//     buf1.copy(r); 
+//     buf2.copy(r, buf1.length);     
+//     return r;
+// }
+// //DES加密
+// var EncryptDES = function (data, key, vi) {      
+// 	return data = cipheriv(crypto.createCipheriv('des', key, vi), 'utf8', data).toString('base64');
+// }
+// //DES解密
+// var DecryptDES = function (data, key, vi) {                        
+// 	return cipheriv(crypto.createDecipheriv('des', key, vi), 'base64', data) .toString('utf8');
+// }
 /*des加密解密算法end*/
 
 //用户登陆页
 exports.login = function(req, res){
-	// console.log(crypto.createCipheriv('des', '111111').update('222222','utf8','hex').final('hex'));
-	// var crypto = require("crypto");
-	// var plaintext = new Buffer( '675A69675E5A6B5A', 'hex' ).toString( 'binary' );
-	// console.log("plian:"+plaintext);
-	// var key = new Buffer( '675A69675E5A6B5A', 'hex' );
-	// console.log(key)
-	// var iv = new Buffer(8);
-	// iv.fill(0);
-	// var cipher = crypto.createCipheriv("des", key, iv);
-	// cipher.setAutoPadding(false);
-	// var c = cipher.update( plaintext, 'binary', 'hex' );
-	// c+=cipher.final('hex' );
-	// console.log(c);
 
-
-	// console.log("kevin is :")
-	// console.log('kevin14'.toString('base64'))
 	var md5 = crypto.createHash('md5');
 	var password = md5.update('kevin14').digest('hex');
-	console.log(crypto.createCipher('des', 'kevin14').update(password,'utf8').toString('base64'))
-	console.log(crypto.createDecipher('des','kevin14').update('v15XEP1zSid14X8zm4NrJ6tD2ZRnbIlXWnAbZtnXM=','base64').toString('utf8') === password)
-	// console.log(password)
-	// // var key = new Buffer('12311111','binary');
-	// var key = 'helloaaa';
-	// console.log('key is :'+key);
-	// // var vi = new Buffer('12311111','binary');
-	// var vi = '12345678';
-	// console.log('vi is :'+vi);
-	// console.log(EncryptDES(password,key,vi));
-	// console.log(DecryptDES('sFwmFJCfH4YCAjKJGpWp2UFwFhRBQ/wLWq86GNiwAZFHm6HfkYflbQ=1',key,vi) === password);
 
+	res.send({
+		"ps:":ps,
+		"长度：":password.length,
+		"密码：":password,
+		"加密：":crypto.createCipher('des', 'kevin14').update(password,'utf8','base64'),
+		"解密：":crypto.createDecipher('des','kevin14').update('R/v15XEP1zSid14X8zm4NrJ6tD2ZRnbIlXWnAbZt','base64','utf8'),
+		"解密长度：":crypto.createDecipher('des','kevin14').update('R/v15XEP1zSid14X8zm4NrJ6tD2ZRnbIlXWnAbZt','base64','base64').length
+	})
+	
 	renderData = {
 		title: '登陆校园酷',
 		username:'未登录',
 		oUrl:'/login'
 	}
+	// res.send("ok")
 	res.render('login.ejs',renderData);
 }
 
@@ -115,9 +99,6 @@ exports.reg_in = function(req,res){
 //登陆 登陆操作得到用户当前页面的url 刷新cookie之后再rediect到之前的页面
 exports.login_in = function(req,res){
 
-
-
-
 	var md5 = crypto.createHash('md5');
 	var password = md5.update(String(req.body.password)).digest('hex');
 
@@ -127,8 +108,10 @@ exports.login_in = function(req,res){
 	};
 	Model_user.user_login(login_data.email,function(data){
 		if (data.length > 0 && data[0].password == login_data.password){
-			req.session.username = data[0].username;
-			req.session.id = data[0].id;
+			// req.session.username = data[0].username;
+			var sid_setter = crypto.createHash('md5').update(String(Math.ceil(Math.random()*100000000))+data[0].username).digest('hex');
+			console.log('sid_setter is :'+sid_setter)
+			req.session.sid = sid_setter;
 			res.redirect('/market');
 		}else{
 			console.log("用户名或者密码错误")
