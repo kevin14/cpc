@@ -1,0 +1,63 @@
+body{background: #f2f2f2;margin: 0;padding: 0;font-size:12px;border-top: 1px solid #2ac3fb;height: 1000px;font-family: Microsoft Yahei;}
+a{text-decoration: none;color: #1769FF;}
+a:hover{text-decoration: underline;}
+img{border: none;}
+li{list-style: none;}
+ul,h5{margin: 0;padding: 0;}
+div{border-radius: 4px;}
+
+/*头部导航*/
+#userBox{height: 45px;width: 100%;margin-left: 274px;}
+#userBox a.school{position: relative; display: inline-block;height: 35px;margin-top:5px;background-color: #2ac3fb;color: #fff; font-size: 14px;line-height: 35px;text-indent: 10px;padding-right: 30px;}
+#userBox a.school .arrow{color: #2ac3fb;position: absolute;right: -22px;font-size: 74px;top: 0;}
+
+/*首页物品内容部分*/
+.good-list-wrapper{width: 750px;}
+.good-list-wrapper .good-wrapper{float: left;margin: 0 14px 14px 0px; width: 154px;height: 230px;border: 1px solid #e4e4e4;background: #fff;padding:8px;box-shadow: 0 0 4px rgba(34, 25, 25, 0.1);}
+.good-list-wrapper .good-wrapper .good-img{border: 1px solid #e4e4e4;width: 150px;height: 150px;}
+.good-list-wrapper .good-wrapper .good-img img{width: 148px;height: 148px;margin: 2px;display: block;}
+.good-list-wrapper .good-wrapper .detail-box{margin-top: 10px;line-height: 14px;width: 148px;color: #3b3b3b;}
+.good-list-wrapper .good-wrapper .detail-box .gname{font-weight: bold;}
+.good-list-wrapper .good-wrapper .detail-box .guser{}
+.good-list-wrapper .good-wrapper .gtime{color: #3b3b3b;}
+
+/*menuBar 左侧导航栏*/
+.nav-w{width: 240px;background-color: #fff;color: #141F40;margin-top: 20px;}
+.nav-w .searchBox{padding: 10px 0 10px 20px;}
+.nav-w .searchBox .search{height: 28px;width: 170px;border: 1px solid #e4e4e4;text-indent: 5px;border-radius: 2px;}
+.nav-w h5.menuLabel{font-size:14px;color: #141F40;padding-left: 16px;font-weight: normal;border-left: 2px solid #2ac3fb;line-height: 36px;}
+.nav-w .searchBox .search:focus,#asideBar .searchBox .search:hover{outline:none;border:#87C6F9 1px solid;box-shadow: 0 0 8px rgba(103, 166, 217, 1);}
+.nav-w ul.menulist{padding: 0 0 20px 40px; }
+.nav-w ul.menulist li{line-height: 34px;font-size: 16px;}
+.nav-w ul.menulist li.onPage a{color:#2ac3fb; }
+.nav-w ul.menulist li a{color: #141F40;}
+.nav-w ul.menulist li a:hover{color: #2ac3fb}
+.nav-w .linkBox a{display: block;width: 240px;height: 40px;line-height: 40px;text-indent: 20px;font-size: 14px;color:#fff;background: #2ac3fb;margin-top: 1px;}
+.nav-w .school{text-indent: 20px;margin-bottom: 0px;}
+
+/*infoBox*/
+#userinfoBox{position: absolute;right:0px;top: 40px; width: 280px;height: 160px;border:#87C6F9 1px solid;box-shadow: 0 0 8px rgba(103, 166, 217, 1);background-color: #fff;}
+#userinfoBox .userinfo-top{height: 118px;border-bottom: 1px solid #2ac3fb; }
+#userinfoBox .userinfo-btm{height: 32px;background-color: #f2f2f2;padding-top: 8px;}
+#userinfoBox .userinfo-top .avatar{float: left;margin:16px ;}
+#userinfoBox .userinfo-top .avatar img{width: 80px;height: 80px;border-radius: 40px;border-radius: 60px;border: 1px solid #2ac3fb;box-shadow: 0 0 8px rgba(103, 166, 217, 1);}
+#userinfoBox .userinfo-top .userinfo{float: left;margin-top: 24px;}
+#userinfoBox .userinfo-top .userinfo .line span{line-height: 22px;}
+#userinfoBox .userinfo-top .userinfo .line .username{font-weight: bold;font-size: 14px;}
+#userinfoBox .userinfo-top .userinfo .line .userschool{font-size: 12px;margin-left: 8px;}
+#userinfoBox .userinfo-top .userinfo .line .countset{line-height: 22px;}
+#userinfoBox .userinfo-top .userinfo .line .countset:hover{color: #2ac3fb;}
+#userinfoBox .userinfo-btm a{display: inline-block;height: 24px;width: 80px;border: 1px solid #2ac3fb;line-height: 24px;text-align: center;font-weight: bold;background-color: #fff;}
+#userinfoBox .userinfo-btm a.center{margin-left: 26px;padding: 0 4px;}
+#userinfoBox .userinfo-btm a.quit{margin-left: 60px;}
+#userinfoBox .userinfo-btm a:hover{color: #fff;background-color: #2ac3fb;}
+
+.bodyer{width: 1000px;margin: 30px auto;}
+.column-2 .column-left{width: 240px;float: left;}
+.column-2 .column-right{width: 730px;margin-left: 30px;float: left;}
+.guide{height: 140px;border-radius: 4px;background-color: gray;}
+.banner-main{height: 140px;}
+.good-list-wrapper{margin-top: 20px;}
+.good-list-wrapper .good-menu{padding: 10px 0;}
+.good-list-wrapper .good-menu span{}
+.good-list-wrapper .good-list{}
