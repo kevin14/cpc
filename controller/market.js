@@ -10,6 +10,7 @@ var settings = require('../settings.js');
 //首页
 exports.index = function(req,res){
 	renderData = {
+		staticUrl:settings.staticUrl,
 		title: '校园大卖场',
 		oUrl:'/market'
 	}
