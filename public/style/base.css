@@ -84,7 +84,7 @@ font-size: 0;
 .nav-w .searchBox .search{height: 32px;width: 170px;border: 1px solid #80d39a;text-indent: 5px;border-radius: 2px;}
 .nav-w h5.menuLabel{font-size:14px;color: #141F40;padding-left: 16px;font-weight: normal;line-height: 41px;}
 .nav-w .searchBox .search:focus,.nav-w .searchBox .search:hover{outline:none;border:#80d39a 1px solid;box-shadow: 0 0 8px #80d39a;}
-.nav-w .searchBox .search-submit{width: 32px;height: 32px;text-indent: -100px;overflow: hidden; background:url(http://localhost:80/images/s.png) 0px 0px no-repeat;display: inline-block;border: none;}
+.nav-w .searchBox .search-submit{width: 32px;height: 32px;text-indent: -100px;overflow: hidden; background:url(http://www.campuscool.cn/images/s.png) 0px 0px no-repeat;display: inline-block;border: none;}
 .nav-w ul.menulist{padding: 0 0 20px 40px; }
 .nav-w ul.menulist li{line-height: 40px;font-size: 16px;}
 .nav-w ul.menulist li.onPage a{color:#2ac3fb; }
