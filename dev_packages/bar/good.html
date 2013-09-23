@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="./css/good.css">
+<script type="text/javascript" src="jquery.js"></script>
 <div class="navbar">
 	<div class="navbar-inner">
 		<div class="container">
@@ -13,8 +14,13 @@
 					<li class="nav-ele"><a href="#" class="nav-ele-link">切换学校</a></li>
 				</ul>
 				<ul class="nav pull-right">
-					<li class="nav-ele"><a href="#" class="nav-ele-link">xxxxx</a></li>
-					<li class="divider-vertical nav-ele"></li>
+					<li class="nav-ele dropdown">
+						<a class="dropdown-btn" href="#">下拉</a>
+						<ul class="dropdown-menu">
+							<li><a href="#">退出登录</a></li>
+							<li><a href="#">管理</a></li>
+						</ul>
+					</li>
 				</ul>
 			</div>
 		</div>
@@ -26,8 +32,12 @@
 		</div>
 		<div class="nav-w">
 			<div class="searchBox">
-				<input id="search" type="text" class="search" name="search" placeholder="这里输入物品名进行搜索"/>
+				<form action="#" method="GET">
+			<input id="search" type="text" class="search" name="search" placeholder="这里输入产品进行搜索"/>
+			<input type="submit" class="search-submit">
+		</form>
 			</div>
+			<div class="magic"></div>
 			<h5 class="menuLabel">分类</h5>
 			<ul class="menulist">
 				<li class="onPage"><a href="#">所有物品</a></li>
@@ -204,3 +214,43 @@
 		</div>
 	</div>
 </div>
+
+<div class="footer">
+	<div class="footer-inner">
+		<ul class="nav">
+			<li class="nav-ele"><a href="#" class="nav-title"></a></li>
+			<li class="nav-ele"><a href="#" ></a></li>
+			<li class="nav-ele"><a href="#" ></a></li>
+			<li class="nav-ele"><a href="#" ></a></li>
+		</ul>
+		<ul class="nav">
+			<li class="nav-ele"><a href="#" class="nav-title"></a></li>
+			<li class="nav-ele"><a href="#" ></a></li>
+			<li class="nav-ele"><a href="#" ></a></li>
+			<li class="nav-ele"><a href="#" ></a></li>
+		</ul>
+		<ul class="nav">
+			<li class="nav-ele"><a href="#" class="nav-title"></a></li>
+			<li class="nav-ele"><a href="#" ></a></li>
+			<li class="nav-ele"><a href="#" ></a></li>
+			<li class="nav-ele"><a href="#" ></a></li>
+		</ul>
+		<ul class="nav">
+			<li class="nav-ele"><a href="#" class="nav-title"></a></li>
+			<li class="nav-ele"><a href="#" ></a></li>
+			<li class="nav-ele"><a href="#" ></a></li>
+			<li class="nav-ele"><a href="#" ></a></li>
+		</ul>
+	</div>
+</div>
+
+<script type="text/javascript">
+	$(".menulist li").hover(function(){
+		$(".magic").stop(true,true);
+		$(".magic").animate({top:$(this)[0].offsetTop},100)
+	})
+	$(".menulist").mouseleave(function(){
+		$(".magic").stop(true,true);
+		$(".magic").animate({top:'63px'},300);
+	})
+</script>

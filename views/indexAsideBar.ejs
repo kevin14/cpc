@@ -1,46 +1,59 @@
-        <div class="aside">
-             <div class="aside_hat">
-                 <span>分类：</span>
-                 <span>Tags：</span>
-             </div>
-            <div class="aside_selected">
-                <span id="selected_class">校园生活</span>
-                <span id="selected_tag">DOTA</span>
+    <div class="column-left">
+        <div class="guide">
+        </div>
+        <div class="nav-w">
+            <div class="searchBox">
+                <form action="#" method="GET">
+            <input id="search" type="text" class="search" name="search" placeholder="这里输入产品进行搜索"/>
+            <input type="submit" class="search-submit">
+        </form>
             </div>
-            <div class="aside_body">
-                <div class="aside_body_class">
-                    <div class="hat_line"></div>
-                    <ul>
-                        <li><a>校园生活</a></li>
-                        <li><a>校园情调</a></li>
-                        <li><a>校园激情</a></li>
-                        <li><a>校园什么</a></li>
-                        <li><a>校啊啊啊</a></li>
-                        <li><a>校呵呵呵</a></li>
-                        <li><a>校园生活</a></li>
-                        <li><a>校test</a></li>
-                        <li><a>校园生活</a></li>
-                    </ul>
-
-                </div>
-                <div class="aside_body_tags">
-                    <div class="hat_line"></div>
-                    <ul>
-                        <li><a>爱情</a></li>
-                        <li><a>玩儿蛋</a></li>
-                        <li><a>爱情</a></li>
-                        <li><a>玩儿蛋</a></li>
-                        <li><a>爱情</a></li>
-                        <li><a>玩儿蛋</a></li>
-                        <li><a>爱情</a></li>
-                        <li><a>玩儿蛋</a></li>
-                        <li><a>爱情</a></li>
-                        <li><a>玩儿蛋</a></li>
-                        <li><a>爱情</a></li>
-                        <li><a>玩儿蛋</a></li>
-                    </ul>
-                    <a class="more_tags">展开更多</a>
-                </div>
-                <div class="hat_foot"></div>
+            <div class="magic"></div>
+            <h5 class="menuLabel">分类</h5>
+            <ul class="menulist">
+                <li class="onPage"><a href="#">所有物品</a></li>
+                <li><a href="#">书籍/学习周边</a></li>
+                <li><a href="#">自行车/生活周边</a></li>
+                <li><a href="#">数码/电子</a></li>
+                <li><a href="#">门票/卡券</a></li>
+                <li><a href="#">其他</a></li>
+            </ul>
+            <div class="linkBox">
+                <a href="#">关于campuscool</a>
+                <a href="#">帮助campuscool</a>
             </div>
         </div>
+    </div>
+    <!-- <div id="userinfoBox">
+            <div class="userinfo-top">
+                    <div class="avatar">
+                            <img src="./002.jpg" alt="kevin14"/>
+                    </div>
+                    <div class="userinfo">
+                            <div class="line">
+                                    <span class="username">kevin14</span>
+                                    <span class="userschool">华东理工大学</span>
+                            </div>
+                            <div class="line"><span class="useremail">kevin14@me.com</span></div>
+                            <div class="line">
+                                    <a href="#" class="countset">账户设置</a>
+                            </div>
+                    </div>
+            </div>
+            <div class="userinfo-btm">
+                    <a href="#" class="center">进入个人中心</a>
+                    <a href="#" class="quit">退出登录</a>
+            </div>
+    </div> -->
+
+
+<script type="text/javascript">
+    $(".menulist li").hover(function(){
+        $(".magic").stop(true,true);
+        $(".magic").animate({top:$(this)[0].offsetTop},100)
+    })
+    $(".menulist").mouseleave(function(){
+        $(".magic").stop(true,true);
+        $(".magic").animate({top:'63px'},300);
+    })
+</script>

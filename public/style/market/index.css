@@ -1,4 +1,4 @@
-.topic_wrapper .topic_menu{width: 600px;height:33px;border-bottom: 1px solid #999999;position: relative;}
+/*.topic_wrapper .topic_menu{width: 600px;height:33px;border-bottom: 1px solid #999999;position: relative;}
 .topic_menu a{display: inline-block;width: 66px;height: 30px;line-height: 30px;text-align: center;background-image: url("http://localhost:3000/images/icon.png");background-position: -6px -83px;letter-spacing: 3px;}
 .topic_menu .on{background-image: url("http://localhost:3000/images/icon.png");background-position: -6px -52px;color: #fff;}
 .topic_menu .new_topic{position:absolute;right:0px;width: 75px;background-image: url("http://localhost:3000/images/icon.png");background-position:-5px -331px;}
@@ -17,4 +17,13 @@
 .topic_info_num .like{background-image: url("http://localhost:3000/images/icon.png");background-position: -151px -24px;}
 .topic_info_num .reply{background-image: url("http://localhost:3000/images/icon.png");background-position: -183px -24px;}
 .topic_info_num span{margin-left: 3px;}
-
+*/
+/*首页物品内容部分*/
+.good-list-wrapper{width: 750px;font-size: 12px;}
+.good-list-wrapper .good-wrapper{float: left;margin: 0 14px 14px 0px; width: 154px;height: 230px;border: 1px solid #e4e4e4;background: #fff;padding:8px;box-shadow: 0 0 4px rgba(34, 25, 25, 0.1);border-radius: 2px;}
+.good-list-wrapper .good-wrapper .good-img{border: 1px solid #e4e4e4;width: 150px;height: 150px;}
+.good-list-wrapper .good-wrapper .good-img img{width: 148px;height: 148px;margin: 2px;display: block;}
+.good-list-wrapper .good-wrapper .detail-box{margin-top: 10px;line-height: 14px;width: 148px;color: #3b3b3b;}
+.good-list-wrapper .good-wrapper .detail-box .gname{font-weight: bold;line-height: 20px;}
+.good-list-wrapper .good-wrapper .detail-box .guser{line-height: 20px;}
+.good-list-wrapper .good-wrapper .gtime{color: #3b3b3b;}

@@ -6,7 +6,6 @@ body{
     height:100%;
     font-size: 14px;
     color:#4c4c4c;
-    background-color: #E0E0E0;
     font-family: Microsoft Yahei;
 }
 html{
@@ -29,6 +28,7 @@ ol,ul {
 q:before,q:after {
     content:'';
 }
+a{text-decoration: none;color: #1769FF;}
 a{cursor: pointer;}
 .clearfix
 {
@@ -43,7 +43,93 @@ display:block;
 clear:both;
 font-size: 0;
 }
-.top_bar{width:100%;height:40px;background: url("http://localhost:3000/images/top_bar.png") repeat-x;color: #fff;z-index: 12;box-shadow: 0 0 20px #000;}
+
+/*头部导航*/
+#userBox{height: 45px;width: 100%;margin-left: 274px;}
+#userBox a.school{position: relative; display: inline-block;height: 35px;margin-top:5px;background-color: #2ac3fb;color: #fff; font-size: 14px;line-height: 35px;text-indent: 10px;padding-right: 30px;}
+#userBox a.school .arrow{color: #2ac3fb;position: absolute;right: -22px;font-size: 74px;top: 0;}
+
+/*header导航*/
+.navbar{margin-bottom: 20px;overflow: visible;line-height:20px;}
+.navbar .navbar-inner{
+  min-height: 48px;
+  padding-right: 20px;
+  padding-left: 20px;
+  /*background: url(../images/headerbg.gif) repeat-x;*/
+  background-color: #80d39a;
+      }
+.navbar-inner:before,.navbar-inner:after {display: table;line-height: 0;content: "";}
+.navbar-inner:after {clear: both;}
+.navbar .navbar-inner .container{}
+.navbar .navbar-inner .container .brand{display: block;float: left;padding: 10px 20px 10px;margin-left: -20px;font-size: 20px;font-weight: 200;color: #777777;text-shadow: 0 1px 0 #ffffff;line-height:20px;font-family: "\5fae\8f6f\96c5\9ed1", "\5b8b\4f53","Helvetica Neue", Helvetica, Arial,  sans-serif;}
+.navbar .navbar-inner .container .btn-navbar{margin-top: 5px;}
+.navbar .navbar-inner .container .nav-wrapper{ width: 1000px;margin: 0 auto;}
+.nav-wrapper .nav{position: relative;left: 0;display: block;float: left;margin: 0 10px 0 0;}
+.nav-wrapper .nav .nav-ele{float: left;}
+.nav-wrapper .nav .nav-ele-link{display: block;padding: 10px 15px 10px;}
+.nav-wrapper .pull-right{float: right;}
+.dropdown{position: relative;}
+.dropdown a{display: inline-block;width: 50px;height: 50px;line-height: 50px;text-align: center;}
+.dropdown:hover ul{display: block;}
+.dropdown:hover a{background-color: #f9fffa;}
+.dropdown-menu{display: none;position: absolute;z-index: 100;border:1px solid #80d39a;border-top:none;top: 50px;width: 140px;background-color: #f9fffa;left: -91px;}
+.dropdown-menu li a{text-indent: 20px;}
+/*header end*/
+
+
+
+/*menuBar 左侧导航栏*/
+.nav-w{width: 240px;background-color: #fff;color: #141F40;margin-top: 20px;position: relative;z-index: 0;border-radius: 4px;}
+.nav-w .searchBox{padding: 15px 0 15px 20px;background-color: #f9fffa;border-bottom: 1px solid #d8fedf;border-radius: 0;}
+.nav-w .searchBox .search{height: 32px;width: 170px;border: 1px solid #80d39a;text-indent: 5px;border-radius: 2px;}
+.nav-w h5.menuLabel{font-size:14px;color: #141F40;padding-left: 16px;font-weight: normal;line-height: 41px;}
+.nav-w .searchBox .search:focus,.nav-w .searchBox .search:hover{outline:none;border:#80d39a 1px solid;box-shadow: 0 0 8px #80d39a;}
+.nav-w .searchBox .search-submit{width: 32px;height: 32px;text-indent: -100px;overflow: hidden; background:url(http://localhost:80/images/s.png) 0px 0px no-repeat;display: inline-block;border: none;}
+.nav-w ul.menulist{padding: 0 0 20px 40px; }
+.nav-w ul.menulist li{line-height: 40px;font-size: 16px;}
+.nav-w ul.menulist li.onPage a{color:#2ac3fb; }
+.nav-w ul.menulist li a{color: #141F40;display: inline-block;width: 160px;border-bottom: 1px solid #f2f2f2;height: 40px;line-height: 40px;text-indent: 20px;}
+.nav-w ul.menulist li a:hover{color: #2ac3fb;text-decoration: none;}
+.nav-w ul.menulist li .link-label{display: block;float: left;margin-left: -30px; width: 30px;height: 30px;background-color: #80d39a;margin-top:5px;}
+.nav-w .linkBox a{display: block;width: 240px;height: 40px;line-height: 40px;text-indent: 20px;font-size: 14px;color:#fff;background: #80d39a;margin-top: 1px;}
+.nav-w .school{text-indent: 20px;margin-bottom: 0px;}
+.nav-w .magic{height: 40px;width: 240px;position: absolute;left: -7px;border-left: 7px solid #80d39a;top: 63px;z-index: -1;background-color: #f9fffa;}
+
+/*infoBox*/
+#userinfoBox{position: absolute;right:0px;top: 40px; width: 280px;height: 160px;border:#87C6F9 1px solid;box-shadow: 0 0 8px rgba(103, 166, 217, 1);background-color: #fff;}
+#userinfoBox .userinfo-top{height: 118px;border-bottom: 1px solid #2ac3fb; }
+#userinfoBox .userinfo-btm{height: 32px;background-color: #f2f2f2;padding-top: 8px;}
+#userinfoBox .userinfo-top .avatar{float: left;margin:16px ;}
+#userinfoBox .userinfo-top .avatar img{width: 80px;height: 80px;border-radius: 40px;border-radius: 60px;border: 1px solid #2ac3fb;box-shadow: 0 0 8px rgba(103, 166, 217, 1);}
+#userinfoBox .userinfo-top .userinfo{float: left;margin-top: 24px;}
+#userinfoBox .userinfo-top .userinfo .line span{line-height: 22px;}
+#userinfoBox .userinfo-top .userinfo .line .username{font-weight: bold;font-size: 14px;}
+#userinfoBox .userinfo-top .userinfo .line .userschool{font-size: 12px;margin-left: 8px;}
+#userinfoBox .userinfo-top .userinfo .line .countset{line-height: 22px;}
+#userinfoBox .userinfo-top .userinfo .line .countset:hover{color: #2ac3fb;}
+#userinfoBox .userinfo-btm a{display: inline-block;height: 24px;width: 80px;border: 1px solid #2ac3fb;line-height: 24px;text-align: center;font-weight: bold;background-color: #fff;}
+#userinfoBox .userinfo-btm a.center{margin-left: 26px;padding: 0 4px;}
+#userinfoBox .userinfo-btm a.quit{margin-left: 60px;}
+#userinfoBox .userinfo-btm a:hover{color: #fff;background-color: #2ac3fb;}
+
+.bodyer{width: 1000px;margin: 30px auto;}
+.column-2 .column-left{width: 240px;float: left;}
+.column-2 .column-right{width: 730px;margin-left: 30px;float: left;}
+.guide{height: 140px;border-radius: 4px;background-color: gray;}
+.banner-main{height: 140px;}
+.good-list-wrapper{margin-top: 20px;}
+.good-list-wrapper .good-menu{padding: 10px 0;}
+.good-list-wrapper .good-menu span{}
+.good-list-wrapper .good-list{}
+
+/*footer*/
+.footer{height: 180px;background-color: #80d39a;bottom: 0;}
+.footer .footer-inner{width: 1000px;margin: 0 auto;height: 180px;}
+.footer .footer-inner .nav{width: 180px;float: left;height: 100px;margin: 20px 0 0 20px;border-left: 1px solid #33b64c;}
+.footer .footer-inner .nav .nav-ele{}
+
+
+/*.top_bar{width:100%;height:40px;background: url("http://localhost:3000/images/top_bar.png") repeat-x;color: #fff;z-index: 12;box-shadow: 0 0 20px #000;}
 .top_bar .top_wrapper{width:1000px;height:40px;margin: 0 auto;}
 .top_bar .top_wrapper .school{width:225px;height:40px;float: left;}
 .top_bar .top_wrapper .school span{line-height: 40px;font-weight:bold;}
@@ -95,4 +181,4 @@ font-size: 0;
 
 .info_area .hot_topic{width: 170px;height: 400px;margin-top: 30px;text-shadow:1px 1px 0 #fff;}
 .info_area .hot_topic a{font-size: 12px;display: block;height: 12px;margin-top: 10px; }
-.info_area .hot_topic a:hover{text-decoration: underline;}
+.info_area .hot_topic a:hover{text-decoration: underline;}*/
