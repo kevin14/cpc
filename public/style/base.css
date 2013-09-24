@@ -53,10 +53,9 @@ font-size: 0;
 /*header导航*/
 .navbar{margin-bottom: 20px;overflow: visible;line-height:20px;}
 .navbar .navbar-inner{
-  min-height: 48px;
   padding-right: 20px;
   padding-left: 20px;
-  /*background: url(../images/headerbg.gif) repeat-x;#80d39a*/
+  background: url(../images/headerbg.png) repeat-x;
   background-color: #ccffcc;
       }
 .navbar-inner:before,.navbar-inner:after {display: table;line-height: 0;content: "";}
