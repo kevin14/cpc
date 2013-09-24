@@ -11,11 +11,10 @@ var settings = require('../settings.js');
 exports.index = function(req,res){
 	renderData = {
 		staticUrl:settings.staticUrl,
-		title: '校园大卖场',
+		title: '校园酷-校园市场',
 		oUrl:'/market'
 	}
 	req.session.cookie.originalMaxAge = 3600*24*7;
-	console.log(req.session.cookie.originalMaxAge)
 	if (!req.session.hasOwnProperty('username')) {
 		renderData.username = "未登录";
 	}else{
