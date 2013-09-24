@@ -57,7 +57,7 @@ font-size: 0;
   padding-right: 20px;
   padding-left: 20px;
   /*background: url(../images/headerbg.gif) repeat-x;#80d39a*/
-  background-color: #151b1f;
+  background-color: #ccffcc;
       }
 .navbar-inner:before,.navbar-inner:after {display: table;line-height: 0;content: "";}
 .navbar-inner:after {clear: both;}
