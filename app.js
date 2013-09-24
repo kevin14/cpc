@@ -10,7 +10,7 @@ var path = require('path');
 var app = express();
 
 // all environments
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 80);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.use(express.favicon());
@@ -42,6 +42,7 @@ app.get('/change_your_school',user.changeschool);//切換学校
 
 
 //属于market的route
+app.get('/',market.index);
 app.get('/market',market.index);
 app.get('/market/fabu',market.fabu);
 app.get('/market/single',market.single);

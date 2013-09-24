@@ -56,23 +56,29 @@ font-size: 0;
   min-height: 48px;
   padding-right: 20px;
   padding-left: 20px;
-  /*background: url(../images/headerbg.gif) repeat-x;*/
-  background-color: #80d39a;
+  /*background: url(../images/headerbg.gif) repeat-x;#80d39a*/
+  background-color: #151b1f;
       }
 .navbar-inner:before,.navbar-inner:after {display: table;line-height: 0;content: "";}
 .navbar-inner:after {clear: both;}
 .navbar .navbar-inner .container{}
-.navbar .navbar-inner .container .brand{display: block;float: left;padding: 10px 20px 10px;margin-left: -20px;font-size: 20px;font-weight: 200;color: #777777;text-shadow: 0 1px 0 #ffffff;line-height:20px;font-family: "\5fae\8f6f\96c5\9ed1", "\5b8b\4f53","Helvetica Neue", Helvetica, Arial,  sans-serif;}
+.navbar .navbar-inner .container .brand{display: block;float: left;padding: 0px 20px 0px 20px;margin-left: -20px;font-size: 20px;font-weight: 200;color: #777777;text-shadow: 0 1px 0 #ffffff;line-height:20px;font-family: "\5fae\8f6f\96c5\9ed1", "\5b8b\4f53","Helvetica Neue", Helvetica, Arial,  sans-serif;}
 .navbar .navbar-inner .container .btn-navbar{margin-top: 5px;}
 .navbar .navbar-inner .container .nav-wrapper{ width: 1000px;margin: 0 auto;}
 .nav-wrapper .nav{position: relative;left: 0;display: block;float: left;margin: 0 10px 0 0;}
 .nav-wrapper .nav .nav-ele{float: left;}
-.nav-wrapper .nav .nav-ele-link{display: block;padding: 10px 15px 10px;}
+.nav-wrapper .nav .nav-ele-link{display: block;height: 50px;line-height: 50px;padding: 0 10px;color: #096509;}
+.nav-wrapper .nav .nav-ele-link:hover{color:#80d39a;text-decoration: none; }
+.nav-wrapper .nav .nav-ele-link.font-small{line-height: 55px;}
+.nav-wrapper .nav .highlight{color:#80d39a; }
+.font-big{font-size: 16px;}
+.font-small{font-size: 12px;}
 .nav-wrapper .pull-right{float: right;}
+.userAvatar .username{color:#fff;float: right;margin-right: 10px;}
+.userAvatar img{float: right; width: 40px;height: 40px;border-radius: 50%;margin-top: 4px; border: 1px solid #d8fedf;display: inline-block;}
 .dropdown{position: relative;}
-.dropdown a{display: inline-block;width: 50px;height: 50px;line-height: 50px;text-align: center;}
+.userAvatar{display: inline-block;width: 100px;height: 50px;line-height: 50px;text-align: center;}
 .dropdown:hover ul{display: block;}
-.dropdown:hover a{background-color: #f9fffa;}
 .dropdown-menu{display: none;position: absolute;z-index: 100;border:1px solid #80d39a;border-top:none;top: 50px;width: 140px;background-color: #f9fffa;left: -91px;}
 .dropdown-menu li a{text-indent: 20px;}
 /*header end*/
