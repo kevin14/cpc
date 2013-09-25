@@ -27,6 +27,7 @@ exports.index = function(req,res){
 //物品详细页
 exports.single = function(req,res){
 	renderData = {
+		staticUrl:settings.staticUrl,
 		title:'物品详细页面'
 	}
 	res.render('market/good.ejs',renderData);
@@ -35,6 +36,7 @@ exports.single = function(req,res){
 //物品发布页
 exports.fabu = function(req,res){
 	renderData = {
+		staticUrl:settings.staticUrl,
 		title:'发布一件物品',
 		username:'kevin14',
 		oUrl:null

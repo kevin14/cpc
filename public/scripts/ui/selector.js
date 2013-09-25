@@ -110,13 +110,13 @@
 				return false;
 			};
 		},
-		_destory: function() {
+		destory: function() {
 			this.kSelector.remove();
 		},
 		_regEvent: function(layer_count) {
 			var self = this;
 			this.kSelector_close.bind('click', function() {
-				self._destory();
+				self.destory();
 			})
 			this.kSelector_submit.bind('click', function() {
 				self.kSelector_data = [];
@@ -131,7 +131,7 @@
 				}
 				self.opt.remember_data = self.opt.remember_data.join(",");
 				self.opt.callback(self.kSelector_data, self.opt.remember_data);
-				self._destory();
+				self.destory();
 			})
 		},
 		_searchReg: function() {
