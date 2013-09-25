@@ -34,5 +34,30 @@ Copyright © 2013 校园酷</li>
     </div>
 </div>
 </body>
-
+<script type="text/javascript" src="<%=staticUrl %>scripts/require.js"></script>
+<script type="text/javascript">
+    require.config({
+        baseUrl:"<%=staticUrl %>scripts",
+        paths:{
+            jquery:"jquery.min",
+            monkey:"monkey"
+        }
+    })
+    $(".change-school").bind('click',function(){
+        require(['ui/selector'],function (Selector){
+            Selector.init({
+                data:"<%=staticUrl %>scripts/org_data.js",
+                layer:3,
+                search_bar:2,
+                selector_title:"多多玛尼",
+                defaultData:"",
+                selector_detial_title:["大美女一个请选择","小萝莉一个请选择","任盈盈一个归kevin了"],
+                callback:function(data,kSelector_data){
+                    // console.log(data);
+                    // console.log(kSelector_data);
+                }
+            })
+        })
+    })
+</script>
 </html>

@@ -1,49 +1,16 @@
-body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td {
-    margin:0;
-    padding:0;
-}
-body{
-    height:100%;
-    font-size: 14px;
-    color:#4c4c4c;
-    font-family: Microsoft Yahei;
-}
-html{
-    height:100%;
-}
-table {
-    border-collapse:collapse;
-    border-spacing:0;
-}
-fieldset,img {
-    border:0;
-}
-address,caption,cite,code,dfn,em,strong,th,var {
-    font-style:normal;
-    font-weight:normal;
-}
-ol,ul {
-    list-style:none;
-}
-q:before,q:after {
-    content:'';
-}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td {margin:0;padding:0;}
+body{height:100%;font-size: 14px;color:#4c4c4c;font-family: Microsoft Yahei;}
+html{height:100%;}
+table {border-collapse:collapse;border-spacing:0;}
+fieldset,img {border:0;}
+address,caption,cite,code,dfn,em,strong,th,var {font-style:normal;font-weight:normal;}
+ol,ul {list-style:none;}
+q:before,q:after {content:'';}
 a{text-decoration: none;color: #1769FF;}
 a:hover{text-decoration: underline;}
 a{cursor: pointer;}
-.clearfix
-{
-zoom:1;
-}
-.clearfix:after
-{
-content:".";
-height:0;
-visibility:hidden;
-display:block;
-clear:both;
-font-size: 0;
-}
+.clearfix{zoom:1;}
+.clearfix:after{content:".";height:0;visibility:hidden;display:block;clear:both;font-size: 0;}
 
 /*头部导航*/
 #userBox{height: 45px;width: 100%;margin-left: 274px;}
@@ -81,8 +48,6 @@ font-size: 0;
 .dropdown-menu{display: none;position: absolute;z-index: 100;border:1px solid #80d39a;border-top:none;top: 50px;width: 140px;background-color: #f9fffa;left: -91px;}
 .dropdown-menu li a{text-indent: 20px;}
 /*header end*/
-
-
 
 /*menuBar 左侧导航栏*/
 .nav-w{width: 240px;background-color: #fff;color: #141F40;margin-top: 20px;position: relative;z-index: 0;border-radius: 4px;}
