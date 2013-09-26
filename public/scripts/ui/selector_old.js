@@ -135,7 +135,6 @@
 				var li_length = self.kSelector_ul.find("li").length;
 				for (var i = 0; i < li_length; i++) {
 					var code_data = self.kSelector_ul.find("li:eq(" + i + ") a.selector_on").attr("kSelector-data");
-					
 					self.kSelector_data.push({
 						code: code_data,
 						value: self.kSelector_ul.find("li:eq(" + i + ") a.selector_on").html()
