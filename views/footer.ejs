@@ -43,15 +43,15 @@ Copyright © 2013 校园酷</li>
             monkey:"monkey"
         }
     })
+
     $(".change-school").bind('click',function(){
         require(['ui/selector'],function (Selector){
             Selector.init({
                 data:"<%=staticUrl %>scripts/org_data.js",
                 layer:3,
-                search_bar:2,
-                selector_title:"多多玛尼",
+                selector_title:"校园酷-选择您想要前往的学校",
                 defaultData:"",
-                selector_detial_title:["大美女一个请选择","小萝莉一个请选择","任盈盈一个归kevin了"],
+                selector_detial_title:["选择城市","选择区域","选择学校"],
                 callback:function(data,kSelector_data){
                     // console.log(data);
                     // console.log(kSelector_data);

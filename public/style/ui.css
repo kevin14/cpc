@@ -7,10 +7,10 @@
 #kSelector .selector_ul li a:hover,#kSelector .selector_ul li a.selector_on{background-color: #f2f2f2;text-decoration: none;}
 #kSelector .kSelector_close{font-family: inherit;font-size: 20px;font-weight: bold;line-height: 20px; display: inline-block;position: absolute;right: 10px;top:10px;width: 20px;overflow: hidden;opacity: 0.2;filter: alpha(opacity=20); cursor: pointer;}
 #kSelector .kSelector_close:hover{opacity: 0.4;filter: alpha(opacity=40); }
-#kSelector .selector_info_text{line-height: 20px;height: 20px;margin-top: 40px;}
+#kSelector .selector_info_text{line-height: 20px;height: 20px;margin: 20px 0;}
 #kSelector .selector_ul li .detial_title{text-align: center;font-size: 14px;line-height: 28px;}
 #kSelector .selector_ul li .kSelector_search{width: 150px;margin-left: 5px;}
-#kSelector .kSelector_submit{margin-top: 10px;background-color: #5f9e2b;}
+#kSelector .kSelector_submit{margin-top: 10px;background-color: #5f9e2b;display: inline-block;padding: 5px 10px;cursor: pointer;border-radius: 4px;border: 1px solid #4ca023;color: #fff;}
 
 /*validator控件*/
 .alert-hasico{padding-left:38px;position: relative;}

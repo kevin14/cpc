@@ -4,7 +4,8 @@
 var Model_user = require('../models/user'),
 	Model_user_info = require('../models/userinfo'),
 	crypto = require('crypto'),
-	redis = require('redis');//我将在正式部署的时候安装redis
+	redis = require('redis'),
+	settings = require('../settings.js');//我将在正式部署的时候安装redis
 
 /*des加密解密算法 由于此算法很坑爹  暂时不用这个算法*/
 // var cipheriv = function (en, code, data) {
@@ -31,17 +32,18 @@ exports.login = function(req, res){
 	var md5 = crypto.createHash('md5');
 	var password = md5.update('kevin14').digest('hex');
 
-	res.send({
-		"ps:":ps,
-		"长度：":password.length,
-		"密码：":password,
-		"加密：":crypto.createCipher('des', 'kevin14').update(password,'utf8','base64'),
-		"解密：":crypto.createDecipher('des','kevin14').update('R/v15XEP1zSid14X8zm4NrJ6tD2ZRnbIlXWnAbZt','base64','utf8'),
-		"解密长度：":crypto.createDecipher('des','kevin14').update('R/v15XEP1zSid14X8zm4NrJ6tD2ZRnbIlXWnAbZt','base64','base64').length
-	})
+	// res.send({
+	// 	"ps:":ps,
+	// 	"长度：":password.length,
+	// 	"密码：":password,
+	// 	"加密：":crypto.createCipher('des', 'kevin14').update(password,'utf8','base64'),
+	// 	"解密：":crypto.createDecipher('des','kevin14').update('R/v15XEP1zSid14X8zm4NrJ6tD2ZRnbIlXWnAbZt','base64','utf8'),
+	// 	"解密长度：":crypto.createDecipher('des','kevin14').update('R/v15XEP1zSid14X8zm4NrJ6tD2ZRnbIlXWnAbZt','base64','base64').length
+	// })
 	
 	renderData = {
-		title: '登陆校园酷',
+		staticUrl:settings.staticUrl,
+		title: '校园酷-登陆',
 		username:'未登录',
 		oUrl:'/login'
 	}
@@ -52,6 +54,7 @@ exports.login = function(req, res){
 //用户注册页
 exports.reg = function(req,res){
 	renderData = {
+		staticUrl:settings.staticUrl,
 		title: '开始校园酷生活',
 		username:'未登录'
 	}

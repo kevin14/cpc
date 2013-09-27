@@ -27,6 +27,7 @@ exports.index = function(req,res){
 //物品详细页
 exports.single = function(req,res){
 	renderData = {
+		staticUrl:settings.staticUrl,
 		title:'物品详细页面'
 	}
 	res.render('market/good.ejs',renderData);

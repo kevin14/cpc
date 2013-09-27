@@ -47,6 +47,7 @@ app.get('/market',market.index);
 app.get('/market/fabu',market.fabu);
 app.get('/market/single',market.single);
 app.post('/market/fabuSubmit',market.fabuSubmit);
+
 //404页面 希望能用服务器去解决这件事情 因为这里还把css js等静态文件过滤了一下 不好不好
 // app.get('/*',common.pageNotFound);
 
