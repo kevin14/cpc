@@ -35,6 +35,7 @@ exports.single = function(req,res){
 //物品发布页
 exports.fabu = function(req,res){
 	renderData = {
+		staticUrl:settings.staticUrl,
 		title:'发布一件物品',
 		username:'kevin14',
 		oUrl:null
@@ -43,5 +44,26 @@ exports.fabu = function(req,res){
 }
 
 exports.fabuSubmit = function(req,res){
-	res.send("ok submit succeed!");
+	var new_good_data = {
+		uid:'14',
+		gname:"aaa",
+		gdesc:"bbbb",
+		gprice:'14',
+		mobile:'13764656676',
+		status:1,
+		place:33221,
+		browser_num:0,
+		classify:2
+	}
+
+	var new_good = new Model_market(new_good_data);
+	new_good.create(function(data){
+		// if (data.affectedRows) {
+		// 	console.log("success!");
+		// 	res.send("ok submit succeed!");
+		// };
+		console.log(data);
+		res.send("ok submit succeed!");
+	});
+	
 }

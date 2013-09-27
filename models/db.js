@@ -17,6 +17,7 @@ exports.insert_one = function(insert_data,table_name,callback){
 	}
 	cmd = cmd.substring(0,cmd.length-1)
 	// cmd += " SELECT LAST_INSERT_ID()";
+	console.log(cmd);
 	conn.query(cmd,function(err,rs,fields){
 		conn.end();
 		if (err) {
