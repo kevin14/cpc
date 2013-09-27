@@ -267,13 +267,14 @@ define(['jquery', 'underscore'], function($, _) {
 			var opt = $.extend({}, options || {});
 			for (var key in opt) {
 				if (opt[key][0] == 1) {
-					this._getEls(key).after("<div class='popover poor-tip-right'><div class='arrow'></div><span class='help-inline'>" + opt[key][1] + "</span></div>");
+					this._getEls(key).parent().append("<div class='popover poor-tip-right validator-tips'><div class='arrow'></div><span class='help-inline'>" + opt[key][1] + "</span></div>");
 				};
 			}
 		},
 		//设置报错tip
 		_setNormalTip: function($, val) {
-			$.next().remove();
+			// $.next().remove();
+			$.parent().find(".validator-tips").remove();
 			if (this.tipStyle == 1) {
 				if (typeof(val) == 'boolean' && val) {
 					if (jQuery.inArray($.attr('id'), this.validatorData) == -1) {
@@ -282,7 +283,7 @@ define(['jquery', 'underscore'], function($, _) {
 					}
 					this.ancyData[$.attr('id')] = $.val();
 					// this.switcher = false;
-					$.after("<div class='validator-alerts-success'><span class='ico-alerts'></span><span class='help-inline'>正确</span><div>");
+					$.parent().append("<div class='validator-alerts-success validator-tips'><span class='ico-alerts'></span><span class='help-inline'>正确</span><div>");
 					$.parent().parent().removeClass("control-group-error").removeClass("error").addClass("control-group-success success")
 
 				} else {
@@ -292,7 +293,7 @@ define(['jquery', 'underscore'], function($, _) {
 					};
 					this.ancyData[$.attr('id')] = "";
 					// this.switcher = true;
-					$.after("<div class='validator-alerts-error'><span class='ico-alerts'></span><span class='help-inline'>" + val + "</span></div>");
+					$.parent().append("<div class='validator-alerts-error validator-tips'><span class='ico-alerts'></span><span class='help-inline'>" + val + "</span></div>");
 					$.parent().parent().removeClass("control-group-success").removeClass("success").addClass("control-group-error error")
 				}
 			} else if (this.tipStyle == 2) {
