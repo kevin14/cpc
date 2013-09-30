@@ -1,10 +1,14 @@
 /*首页物品内容部分*/
 .good-list-wrapper{width: 750px;font-size: 12px;}
 .good-list-wrapper .good-wrapper{float: left;margin: 0 14px 14px 0px; width: 154px;height: 230px;border: 1px solid #e4e4e4;background: #fff;padding:8px;box-shadow: 0 0 4px rgba(34, 25, 25, 0.1);border-radius: 2px;}
-.good-list-wrapper .good-wrapper .good-img{border: 1px solid #e4e4e4;width: 150px;height: 150px;}
+.good-list-wrapper .good-wrapper .good-img{border: 1px solid #e4e4e4;width: 152px;height: 152px;}
 .good-list-wrapper .good-wrapper .good-img img{width: 148px;height: 148px;margin: 2px;display: block;}
-.good-list-wrapper .good-wrapper .detail-box{margin-top: 10px;line-height: 14px;width: 148px;color: #3b3b3b;}
-.good-list-wrapper .good-wrapper .detail-box .gname{font-weight: bold;line-height: 20px;}
+.good-list-wrapper .good-wrapper .detail-box{margin-top: 5px;line-height: 20px;}
+.good-list-wrapper .good-wrapper .detail-box .detail-line a{font-weight: bold;text-indent: 2px; color:#3b3b3b;display: block;height:20px;}
+.good-list-wrapper .good-wrapper .detail-box .detail-line{text-indent: 2px;}
+.good-wrapper .detail-box .detail-line span.ctime{float: left;}
+.good-wrapper .detail-box .detail-line span.g_browser_num{float: right;margin-right: 2px;}
+.good-wrapper .detail-box .detail-line span.g_browser_num i{}
 .good-list-wrapper .good-wrapper .detail-box .guser{line-height: 20px;}
 .good-list-wrapper .good-wrapper .gtime{color: #3b3b3b;}
 

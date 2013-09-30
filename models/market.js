@@ -1,5 +1,5 @@
 var db = require('./db');
-var data = {},ctime,table_name = "cpc_goods";
+var data = {},ctime,table_name = "cpc_goods",conn;
 
 function Good(good){
 	this.table_name = "cpc_goods";
@@ -52,8 +52,16 @@ Good.get_one = function(id){
 }
 
 //获取数据段 做首页及分页使用
-Good.get_by_count = function(begin,length){
-	return db.select_with_count(begin,length,table_name);
+Good.get_good_list = function(begin,length,callback){
+	conn = db.mysql.createConnection(db.dbConnInfo);
+	conn.query("SELECT id,gname,gpic_url,browser_num,place,ctime FROM "+table_name+" WHERE status = 0 LIMIT "+begin+","+length,function(err,rs,field){
+		conn.end();
+		if (err) {
+			console.log(err);
+			return false;
+		};
+		return callback(rs);
+	});
 }
 
 //总数

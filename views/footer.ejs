@@ -34,16 +34,7 @@ Copyright © 2013 校园酷</li>
     </div>
 </div>
 </body>
-<script type="text/javascript" src="<%=staticUrl %>scripts/require.js"></script>
 <script type="text/javascript">
-    require.config({
-        baseUrl:"<%=staticUrl %>scripts",
-        paths:{
-            jquery:"jquery.min",
-            monkey:"monkey"
-        }
-    })
-
     $(".change-school").bind('click',function(){
         require(['ui/selector'],function (Selector){
             Selector.init({

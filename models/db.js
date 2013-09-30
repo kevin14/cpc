@@ -1,4 +1,4 @@
-var mysql = require('mysql')
+	var mysql = require('mysql')
 	,dbConnInfo = {
 		'host': '127.0.0.1',
 		'database': 'cpc',
@@ -7,6 +7,9 @@ var mysql = require('mysql')
 		'password': ''
 	};
 var conn;
+
+exports.mysql = mysql;
+exports.dbConnInfo = dbConnInfo;
 
 //插入单条数据 insert_data：数据json对象 
 exports.insert_one = function(insert_data,table_name,callback){
@@ -97,16 +100,17 @@ exports.select_by_title = function(title,info,table_name,callback){
 }
 
 //查询数据段 begin 开始id length 长度
-exports.select_with_count = function(begin,length,table_name){
+exports.select_with_count = function(begin,length,table_name,callback){
 	conn = mysql.createConnection(dbConnInfo);
 	var cmd = "SELECT * FROM " + table_name + " LIMIT " + begin +","+length;
 
 	conn.query(cmd,function(err,rs,fields){
 		conn.end();
 		if (err) {
+			console.log(err);
 			return false;
 		};
-		return rs;
+		return callback(rs);
 	})
 }
 

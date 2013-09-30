@@ -1,18 +1,18 @@
 <% include ../header.ejs %>
 <link rel="stylesheet" type="text/css" href="<%=staticUrl %>style/market/fabu.css" />
 <div id="main">
-    <form action="fabuSubmit" class="fabu_form" method="POST">
+    <form action="fabuSubmit" class="fabu_form" method="POST" enctype="multipart/form-data">
         <div class="input-wrapper">
             <label class="label_gname" for="wanted">供求：</label>
             <label>
-                <input type="radio" value="0" title="供求" id="wanted" name="wanted"/>
+                <input checked="checked" class="sell_good" type="radio" value="0" title="转让" id="wanted" name="wanted"/>
                 转让
             </label>
             <label>
-                <input type="radio" value="1" title="供求" id="wanted" name="wanted"/>
+                <input class="buy_good" type="radio" value="1" title="出售" id="wanted" name="wanted"/>
                 求购
-            </div>
-        </label>
+            </label>
+        </div>
         <div class="input-wrapper">
             <label class="label_gname" for="gname">标题：</label>
             <input type="text" class="input long" id="gname" name="gname"/>
@@ -50,12 +50,27 @@
                 <option>华东理工大学</option>
             </select>
         </div>
-        <div class="input-wrapper">
+        <div class="input-wrapper" id="pic_picker">
             <label class="label_pic" for="pic">图片：</label>
-            <input class="input" type="file" id="pic" name="pic"/>
+            <input class="input" type="file" id="pic" name="pic" accept="fileUpload"/>
         </div>
         <input type="submit" id="form_submit"  value="发布"/>
     </form>
 </div>
 </div>
+<script type="text/javascript">
+    //判断 求购 或者是 出售
+    var buy_good = $(".buy_good"),sell_good = $(".sell_good");
+    buy_good.bind('click',function(){
+        $("#pic_picker").css("display","none");
+    });
+    sell_good.bind('click',function(){
+        $("#pic_picker").css("display","block");
+    });
+
+    // require(['ui/validator'],function(Validator){
+    //     console.log(Validator);
+    //     Validator.init();
+    // });
+</script>
 <% include ../footer.ejs %>

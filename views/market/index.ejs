@@ -10,138 +10,26 @@
             <span class="choose-local">选择本校</span>
             <span class="choose-all curr">所有学校</span>
         </div>
-        <div class="good-wrapper">
-            <div class="good-img">
-                <a href="#">
-                <img src="<%=staticUrl %>media/market/2013/9/1.png" alt="lalala" />
-                </a>
+         <% for(var i = 0;i<goodList.length;i++){ %>
+            <div class="good-wrapper">
+                <div class="good-img">
+                    <a href="market/good?gid=<%=goodList[i].id%>">
+                        <img src="<%=staticUrl+goodList[i].gpic_url%>" alt="<%=goodList[i].gname%>" title="<%=goodList[i].gname%>" />
+                    </a>
+                </div>
+                <div class="detail-box">
+                    <div class="detail-line">
+                        <a href="<%=staticUrl+goodList[i].gpic_url %>" class="gname"><%=goodList[i].gname%></a>
+                        <!-- <a class="gclassify"><%=goodList[i].classify%></a>暂且不放分类信息 -->
+                        <a href="<%=staticUrl%>"><%=goodList[i].place%></a>
+                    </div>
+                    <div class="detail-line">
+                        <span class="gtime"><%=goodList[i].ctime %></span>
+                        <span class="g_browser_num"><i></i><%=goodList[i].browser_num%></span>
+                    </div>
+                </div>
             </div>
-            <div class="detail-box">
-                <a href="#" class="gname">大美女一个免费！</a>
-                <p class="guser">来自于:kevin14</p>
-            </div>
-            <span class="gtime">2012-1-1 19点</span>
-        </div>
-        <div class="good-wrapper">
-            <div class="good-img">
-                <a href="#">
-                <img src="<%=staticUrl %>media/market/2013/9/1.png" alt="lalala" />
-                </a>
-            </div>
-            <div class="detail-box">
-                <a href="#" class="gname">大美女一个免费！</a>
-                <p class="guser">来自于:kevin14</p>
-            </div>
-            <span class="gtime">2012-1-1 19点</span>
-        </div>
-        <div class="good-wrapper">
-            <div class="good-img">
-                <a href="#">
-                <img src="<%=staticUrl %>media/market/2013/9/1.png" alt="lalala" />
-                </a>
-            </div>
-            <div class="detail-box">
-                <a href="#" class="gname">大美女一个免费！</a>
-                <p class="guser">来自于:kevin14</p>
-            </div>
-            <span class="gtime">2012-1-1 19点</span>
-        </div>
-        <div class="good-wrapper">
-            <div class="good-img">
-                <a href="#">
-                <img src="<%=staticUrl %>media/market/2013/9/1.png" alt="lalala" />
-                </a>
-            </div>
-            <div class="detail-box">
-                <a href="#" class="gname">大美女一个免费！</a>
-                <p class="guser">来自于:kevin14</p>
-            </div>
-            <span class="gtime">2012-1-1 19点</span>
-        </div>
-        <div class="good-wrapper">
-            <div class="good-img">
-                <a href="#">
-                <img src="<%=staticUrl %>media/market/2013/9/1.png" alt="lalala" />
-                </a>
-            </div>
-            <div class="detail-box">
-                <a href="#" class="gname">大美女一个免费！</a>
-                <p class="guser">来自于:kevin14</p>
-            </div>
-            <span class="gtime">2012-1-1 19点</span>
-        </div>
-        <div class="good-wrapper">
-            <div class="good-img">
-                <a href="#">
-                <img src="<%=staticUrl %>media/market/2013/9/1.png" alt="lalala" />
-                </a>
-            </div>
-            <div class="detail-box">
-                <a href="#" class="gname">大美女一个免费！</a>
-                <p class="guser">来自于:kevin14</p>
-            </div>
-            <span class="gtime">2012-1-1 19点</span>
-        </div>
-        <div class="good-wrapper">
-            <div class="good-img">
-                <a href="#">
-                <img src="<%=staticUrl %>media/market/2013/9/1.png" alt="lalala" />
-                </a>
-            </div>
-            <div class="detail-box">
-                <a href="#" class="gname">大美女一个免费！</a>
-                <p class="guser">来自于:kevin14</p>
-            </div>
-            <span class="gtime">2012-1-1 19点</span>
-        </div>
-        <div class="good-wrapper">
-            <div class="good-img">
-                <a href="#">
-                <img src="<%=staticUrl %>media/market/2013/9/1.png" alt="lalala" />
-                </a>
-            </div>
-            <div class="detail-box">
-                <a href="#" class="gname">大美女一个免费！</a>
-                <p class="guser">来自于:kevin14</p>
-            </div>
-            <span class="gtime">2012-1-1 19点</span>
-        </div>
-        <div class="good-wrapper">
-            <div class="good-img">
-                <a href="#">
-                <img src="<%=staticUrl %>media/market/2013/9/1.png" alt="lalala" />
-                </a>
-            </div>
-            <div class="detail-box">
-                <a href="#" class="gname">大美女一个免费！</a>
-                <p class="guser">来自于:kevin14</p>
-            </div>
-            <span class="gtime">2012-1-1 19点</span>
-        </div>
-        <div class="good-wrapper">
-            <div class="good-img">
-                <a href="#">
-                <img src="<%=staticUrl %>media/market/2013/9/1.png" alt="lalala" />
-                </a>
-            </div>
-            <div class="detail-box">
-                <a href="#" class="gname">大美女一个免费！</a>
-                <p class="guser">来自于:kevin14</p>
-            </div>
-            <span class="gtime">2012-1-1 19点</span>
-        </div>
-        <div class="good-wrapper">
-            <div class="good-img">
-                <a href="#">
-                <img src="<%=staticUrl %>media/market/2013/9/1.png" alt="lalala" />
-                </a>
-            </div>
-            <div class="detail-box">
-                <a href="#" class="gname">大美女一个免费！</a>
-                <p class="guser">来自于:kevin14</p>
-            </div>
-            <span class="gtime">2012-1-1 19点</span>
-        </div>
+        <%}%>
     </div>
 </div>
 </div>

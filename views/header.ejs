@@ -7,6 +7,16 @@
     <link rel="stylesheet" type="text/css" href="<%=staticUrl %>style/base.css" />
     <link rel="stylesheet" type="text/css" href="<%=staticUrl %>style/ui.css" />
     <script type="text/javascript" src="<%=staticUrl %>scripts/jquery.min.js" ></script>
+    <script type="text/javascript" src="<%=staticUrl %>scripts/require.js"></script>
+    <script type="text/javascript">
+    require.config({
+        baseUrl:"<%=staticUrl %>scripts",
+        paths:{
+            jquery:"jquery.min",
+            monkey:"monkey"
+        }
+    })
+    </script>
 </head>
 <body>
 <div class="navbar">
