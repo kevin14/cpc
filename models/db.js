@@ -20,7 +20,6 @@ exports.insert_one = function(insert_data,table_name,callback){
 	}
 	cmd = cmd.substring(0,cmd.length-1)
 	// cmd += " SELECT LAST_INSERT_ID()";
-	console.log(cmd);
 	conn.query(cmd,function(err,rs,fields){
 		conn.end();
 		if (err) {
@@ -128,14 +127,27 @@ exports.query = function(query){
 	conn.end();
 }
 
-exports.get_count = function(table_name){
+exports.get_count = function(table_name,callback){
 	conn = mysql.createConnection(dbConnInfo);
-	var cmd = "SELECT COUNT(*) FROM "+ table_name;
+	var cmd = "SELECT COUNT(0) FROM "+ table_name;
 	conn.query(query,function(err,rs,fields){
 		conn.end();
 		if (err) {
 			return false;
 		};
-		return rs;
+		return callback(rs);
+	})
+}
+
+exports.select_all = function(table_name,callback){
+	conn = mysql.createConnection(dbConnInfo);
+	var cmd = "SELECT * FROM " + table_name;
+	conn.query(cmd,function(err,rs,fields){
+		conn.end();
+		if (err) {
+			console.log(err);
+			return false;
+		};
+		return callback(rs);
 	})
 }

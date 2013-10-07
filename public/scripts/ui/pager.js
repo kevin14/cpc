@@ -18,7 +18,7 @@ define([
 
 			var _html = [];
 			_html.push("<div class='pagePanel'>")
-			_html.push("<span class='pageTxt'>共<span>" + count + "</span>个产品</span>");
+			_html.push("<span class='pageTxt'>共<span>" + count + "</span>个</span>");
 			_html.push("<a id='prev'>上一页</a>");
 			_html.push("<a style='display:none' class='firstPage'>1</a>");
 			_html.push("<span style='display:none' class='pageEllipsisPrev'>...</span><div class='numbtns'>");
@@ -121,6 +121,12 @@ define([
 				};
 				self.refreshPanel(count, self.curId)
 			})
+			//判断如果总页数少于pageAmount的话 那么只显示总页数个分页
+			if (Math.ceil(count/this.pageCount)<this.pageAmount) {
+				$(".nums:gt(" + (Math.ceil(count/this.pageCount) - 1) + ")").remove()
+				b_lastPage.css("display","none");
+				ellipsis_next.css("display","none");
+			};
 			var change_panel = function(direction) { //direction 变化panel的方向 right是向右增加 left想左增加 first第一页 last最后一页
 				if (direction == "right" && num_last_id == self.curId && self.curId < totolCount) {
 					var _html = [];

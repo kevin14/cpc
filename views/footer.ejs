@@ -38,11 +38,14 @@ Copyright © 2013 校园酷</li>
     $(".change-school").bind('click',function(){
         require(['ui/selector'],function (Selector){
             Selector.init({
-                data:"<%=staticUrl %>scripts/org_data.js",
-                layer:3,
+                data:"<%=staticUrl %>schoolChoose",
+                layer:2,
+                search_bar:2,
+                data_id:'id',
+                data_name:'school_name',
                 selector_title:"校园酷-选择您想要前往的学校",
                 defaultData:"",
-                selector_detial_title:["选择城市","选择区域","选择学校"],
+                selector_detial_title:["选择城市","选择学校"],
                 callback:function(data,kSelector_data){
                     // console.log(data);
                     // console.log(kSelector_data);

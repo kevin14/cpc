@@ -7,3 +7,5 @@
 .fabu_form input#form_submit{margin: 20px 0 0 90px;background: #00a267;height: 32px;width: 100px;border:2px solid #ddd;color:#fff;}
 .fabu_form input.long{width: 360px;}
 .fabu_form input#wanted{line-height: 32px;margin-right: 2px;margin-top: 8px;}
+.fabu_form input.pic{line-height: 32px;}
+.fabu_form .schoolChoose{line-height: 32px;cursor: pointer;}

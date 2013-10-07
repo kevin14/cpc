@@ -1,3 +1,4 @@
+    <% var onPage = "class='onPage'" %>
     <div class="column-left">
         <div class="guide">
             <img src="<%=staticUrl %>images/market/guide.jpg">
@@ -12,12 +13,10 @@
             <div class="magic"></div>
             <h5 class="menuLabel">分类</h5>
             <ul class="menulist">
-                <li class="onPage"><a href="#">所有物品</a></li>
-                <li><a href="#">书籍/学习周边</a></li>
-                <li><a href="#">自行车/生活周边</a></li>
-                <li><a href="#">数码/电子</a></li>
-                <li><a href="#">门票/卡券</a></li>
-                <li><a href="#">其他</a></li>
+                <li class="onPage"><a href="/market">所有物品</a></li>
+                <%for(var i = 0 ;i<cData.length;i++){%>
+                    <li <%= classify&&classify==(i+1)?onPage:"" %> ><a href="chooseClass?cid=<%=cData[i].id%>"><%=cData[i].classname %><span class="class_count">(<%=cData[i].g_nums %>)</span></a></li>
+                <%}%>
             </ul>
             <div class="linkBox">
                 <a href="#">关于campuscool</a>
@@ -49,12 +48,15 @@
 
 
 <script type="text/javascript">
+    var classify = <%=classify%>;
+    var menuPos = classify?$(".menulist li:eq("+classify+")")[0].offsetTop:"63px";
+    $(".magic").css({top:menuPos});
     $(".menulist li").hover(function(){
         $(".magic").stop(true,true);
         $(".magic").animate({top:$(this)[0].offsetTop},100)
     })
     $(".menulist").mouseleave(function(){
         $(".magic").stop(true,true);
-        $(".magic").animate({top:'63px'},300);
+        $(".magic").animate({top:menuPos},300);
     })
 </script>

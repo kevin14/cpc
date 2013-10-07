@@ -6,8 +6,10 @@
 .good-list-wrapper .good-wrapper .detail-box{margin-top: 5px;line-height: 20px;}
 .good-list-wrapper .good-wrapper .detail-box .detail-line a{font-weight: bold;text-indent: 2px; color:#3b3b3b;display: block;height:20px;}
 .good-list-wrapper .good-wrapper .detail-box .detail-line{text-indent: 2px;}
+.good-list-wrapper .good-wrapper .detail-box .detail-line .grey{color: #888;}
 .good-wrapper .detail-box .detail-line span.ctime{float: left;}
 .good-wrapper .detail-box .detail-line span.g_browser_num{float: right;margin-right: 2px;}
+.good-wrapper .detail-box .school-data{width: 148px;overflow: hidden;height: 20px;}
 .good-wrapper .detail-box .detail-line span.g_browser_num i{}
 .good-list-wrapper .good-wrapper .detail-box .guser{line-height: 20px;}
 .good-list-wrapper .good-wrapper .gtime{color: #3b3b3b;}

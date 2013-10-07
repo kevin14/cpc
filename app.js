@@ -10,7 +10,7 @@ var path = require('path');
 var app = express();
 
 // all environments
-app.set('port', process.env.PORT || 80);
+app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.use(express.favicon());
@@ -38,7 +38,7 @@ app.get('/login',user.login);//登陸頁
 app.post('/user/login_in',user.login_in);//登陸驗證
 app.get('/user/log_out',user.log_out);//登陸驗證
 app.post('/user/reg_in',user.reg_in);//注册
-app.get('/change_your_school',user.changeschool);//切換学校
+app.get('/schoolChoose',common.schoolChoose);//切換学校
 
 
 //属于market的route
@@ -47,6 +47,9 @@ app.get('/market',market.index);
 app.get('/market/fabu',market.fabu);
 app.get('/market/single',market.single);
 app.post('/market/fabuSubmit',market.fabuSubmit);
+app.get('/chooseClass',market.chooseClass);
+app.get('/chooseSchool',market.chooseSchool);
+app.get('/chooseLocal',market.chooseLocal);
 
 //404页面 希望能用服务器去解决这件事情 因为这里还把css js等静态文件过滤了一下 不好不好
 // app.get('/*',common.pageNotFound);

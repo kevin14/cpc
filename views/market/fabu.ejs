@@ -24,11 +24,11 @@
         <div class="input-wrapper">
             <label class="label_classify" for="classify">分类：</label>
             <select class="input" type="text" id="classify" name="classify">
-                <option>华东理工大学</option>
-                <option>华东理工大学</option>
-                <option>华东理工大学</option>
-                <option>华东理工大学</option>
-                <option>华东理工大学</option>
+                <option value="1">书籍/学习周边</option>
+                <option value="2">自行车/生活周边</option>
+                <option value="3">数码/电子</option>
+                <option value="4">门票/卡券</option>
+                <option value="100">其他</option>
             </select>
         </div>
         <div class="input-wrapper">
@@ -42,13 +42,8 @@
         </div>
         <div class="input-wrapper">
             <label class="label_place" for="place">学校：</label>
-            <select class="input" type="text" id="place" name="place" >
-                <option>华东理工大学</option>
-                <option>华东理工大学</option>
-                <option>华东理工大学</option>
-                <option>华东理工大学</option>
-                <option>华东理工大学</option>
-            </select>
+            <span class="schoolChoose">［请选择学校］</span>
+            <input type="hidden" class="schoolChooseVal" name="place" value="" />
         </div>
         <div class="input-wrapper" id="pic_picker">
             <label class="label_pic" for="pic">图片：</label>
@@ -68,9 +63,25 @@
         $("#pic_picker").css("display","block");
     });
 
-    // require(['ui/validator'],function(Validator){
-    //     console.log(Validator);
-    //     Validator.init();
-    // });
+    $(".schoolChoose").bind('click',function(){
+        var self = $(this);
+        require(['ui/selector'],function (Selector){
+            Selector.init({
+                data:"<%=staticUrl %>schoolChoose",
+                layer:2,
+                data_id:'id',
+                data_name:'school_name',
+                search_bar:2,
+                selector_title:"校园酷-选择您所在的学校",
+                defaultData:"",
+                selector_detial_title:["选择城市","选择学校"],
+                callback:function(data){
+                    $(".schoolChooseVal").val(data[1].code);
+                    self.html(data[1].value);
+                }
+            })
+        })
+    })
+
 </script>
 <% include ../footer.ejs %>
