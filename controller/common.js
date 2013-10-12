@@ -26,3 +26,7 @@ exports.schoolChoose = function(req, res) {
 		});
 	}
 }
+
+exports.yanzhen = function(req,res){
+	
+}

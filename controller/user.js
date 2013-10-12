@@ -1,11 +1,12 @@
 /*
-* 处理用户的相关操作 登陆 注册 等
-*/
+ * 处理用户的相关操作 登陆 注册 等
+ */
 var Model_user = require('../models/user'),
 	Model_user_info = require('../models/userinfo'),
 	crypto = require('crypto'),
 	redis = require('redis'),
-	settings = require('../settings.js');//我将在正式部署的时候安装redis
+	settings = require('../settings.js'), //我将在正式部署的时候安装redis
+	email = require('emailjs');
 
 /*des加密解密算法 由于此算法很坑爹  暂时不用这个算法*/
 // var cipheriv = function (en, code, data) {
@@ -26,8 +27,31 @@ var Model_user = require('../models/user'),
 // }
 /*des加密解密算法end*/
 
+//发送邮件 from 网易企业邮箱 依赖于emailjs
+var sendEmail = function(target,title,msg,callback){
+	var server = email.server.connect({
+		user: "kevinyangjing@163.com",
+		password: "19890812k",
+		host: "smtp.163.com",
+		ssl: true
+	});
+	var message = {
+		text: msg,
+		from: "kevinyangjing <kevinyangjing@163.com>",
+		to: target,
+		subject: title
+	}
+	server.send(message, function(err, message) { 
+		if (err) {
+			console.log(err);
+		}else{
+			callback(message);
+		}
+	});
+}
+
 //用户登陆页
-exports.login = function(req, res){
+exports.login = function(req, res) {
 
 	var md5 = crypto.createHash('md5');
 	var password = md5.update('kevin14').digest('hex');
@@ -40,59 +64,59 @@ exports.login = function(req, res){
 	// 	"解密：":crypto.createDecipher('des','kevin14').update('R/v15XEP1zSid14X8zm4NrJ6tD2ZRnbIlXWnAbZt','base64','utf8'),
 	// 	"解密长度：":crypto.createDecipher('des','kevin14').update('R/v15XEP1zSid14X8zm4NrJ6tD2ZRnbIlXWnAbZt','base64','base64').length
 	// })
-	
+
 	renderData = {
-		staticUrl:settings.staticUrl,
+		staticUrl: settings.staticUrl,
 		title: '校园酷-登陆',
-		username:'未登录',
-		oUrl:'/login'
+		username: '未登录',
+		oUrl: '/login'
 	}
 	// res.send("ok")
-	res.render('login.ejs',renderData);
+	res.render('login.ejs', renderData);
 }
 
 //用户注册页
-exports.reg = function(req,res){
+exports.reg = function(req, res) {
 	renderData = {
-		staticUrl:settings.staticUrl,
+		staticUrl: settings.staticUrl,
 		title: '开始校园酷生活',
-		username:'未登录'
+		username: '未登录'
 	}
-	res.render('reg.ejs',renderData);
+	res.render('reg.ejs', renderData);
 }
 
 //切换用户的所在学校页
-exports.changeschool = function(req,res){
+exports.changeschool = function(req, res) {
 	renderData = {
 		title: '选择学校',
-		username:'未登录'
+		username: '未登录'
 	}
-	res.render('changeschool.ejs',renderData);
+	res.render('changeschool.ejs', renderData);
 }
 
 //注册录入
-exports.reg_in = function(req,res){
+exports.reg_in = function(req, res) {
 	//一旦digest被调用 那么md5这个实例将会被清空 因此 每次都需要实例化一下 这的确很令人费解
 	var md5 = crypto.createHash('md5');
 	var password = md5.update(String(req.body.password)).digest('hex');
 
 	var ip = req.connection.remoteAddress;
 	var user = {
-		username:req.body.username,
-		email:req.body.email,
-		password:password,
-		ip:ip
+		username: req.body.username,
+		email: req.body.email,
+		password: password,
+		ip: ip
 	}
 	var newUser = new Model_user(user);
-	newUser.create(function(data){
+	newUser.create(function(data) {
 		if (data.affectedRows) {
 			var info = {
-				uavatar : "http://localhost:3000/media/market/2013/8/avatar.jpg",
-				gender : 3,
-				schoolid : 0//0代表未选择学校
+				uavatar: "http://localhost:3000/media/market/2013/8/avatar.jpg",
+				gender: 3,
+				schoolid: 0 //0代表未选择学校
 			}
 			var userinfo = new Model_user_info(info);
-			userinfo.create(function(rs){
+			userinfo.create(function(rs) {
 				res.redirect('/change_your_school');
 			})
 		};
@@ -100,35 +124,42 @@ exports.reg_in = function(req,res){
 }
 
 //登陆 登陆操作得到用户当前页面的url 刷新cookie之后再rediect到之前的页面
-exports.login_in = function(req,res){
+exports.login_in = function(req, res) {
 
 	var md5 = crypto.createHash('md5');
 	var password = md5.update(String(req.body.password)).digest('hex');
 
 	var login_data = {
-		'email' : req.body.email,
-		'password' : password
+		'email': req.body.email,
+		'password': password
 	};
-	Model_user.user_login(login_data.email,function(data){
-		if (data.length > 0 && data[0].password == login_data.password){
+	Model_user.user_login(login_data.email, function(data) {
+		if (data.length > 0 && data[0].password == login_data.password) {
 			// req.session.username = data[0].username;
-			var sid_setter = crypto.createHash('md5').update(String(Math.ceil(Math.random()*100000000))+data[0].username).digest('hex');
-			console.log('sid_setter is :'+sid_setter)
+			var sid_setter = crypto.createHash('md5').update(String(Math.ceil(Math.random() * 100000000)) + data[0].username).digest('hex');
+			console.log('sid_setter is :' + sid_setter)
 			req.session.sid = sid_setter;
 			res.redirect('/market');
-		}else{
+		} else {
 			console.log("用户名或者密码错误")
 			res.redirect('/login');
 		}
 	});
-	
+
 }
 
 //登出 登出操作得到用户当前页面的url 删除cookie之后再rediect到之前的页面
-exports.log_out = function(req,res){
+exports.log_out = function(req, res) {
 	var originUrl = req.query.oUrl;
 	req.session.username = null;
 	res.clearCookie('username')
 	res.redirect(originUrl);
 }
 
+exports.emailtest = function(req, res) {
+
+	sendEmail("徐嘉轶 <403391676@qq.com>","测试方法","假设这是token",function(msg){
+		res.send(msg+"已经成功发送！");
+	})	
+
+}
