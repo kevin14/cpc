@@ -28,23 +28,28 @@ var Model_user = require('../models/user'),
 /*des加密解密算法end*/
 
 //发送邮件 from 网易企业邮箱 依赖于emailjs
-var sendEmail = function(target,title,msg,callback){
+var sendEmail = function(from, target,host,msg, callback) {
+	console.log(from.username)
+	console.log(from.userEmail)
+	console.log(from.password)
+	console.log(host)
+	console.log(target)
 	var server = email.server.connect({
-		user: "kevinyangjing@163.com",
-		password: "19890812k",
-		host: "smtp.163.com",
+		user: from.userEmail,
+		password: from.password,
+		host: host,
 		ssl: true
 	});
 	var message = {
-		text: msg,
-		from: "kevinyangjing <kevinyangjing@163.com>",
+		text: msg.content,
+		from: from.username+" <"+from.userEmail+">",
 		to: target,
-		subject: title
+		subject: msg.title
 	}
-	server.send(message, function(err, message) { 
+	server.send(message, function(err, message) {
 		if (err) {
 			console.log(err);
-		}else{
+		} else {
 			callback(message);
 		}
 	});
@@ -158,8 +163,20 @@ exports.log_out = function(req, res) {
 
 exports.emailtest = function(req, res) {
 
-	sendEmail("徐嘉轶 <403391676@qq.com>","测试方法","假设这是token",function(msg){
-		res.send(msg+"已经成功发送！");
-	})	
+	var from = {
+		username:"manager",
+		userEmail:"manager@campuscool.cn",
+		password:"cpcmanager"
+	}
+	var host = "smtp.ym.163.com";
+	var target = "supersheet <371081215@qq.com>";
+	var msg = {
+		title:"cpc测试邮件！",
+		content:"mua！！！mua！！！"
+	}
+
+	sendEmail(from,target,host,msg,function(msg) {
+		res.send(msg + "已经成功发送！");
+	})
 
 }
