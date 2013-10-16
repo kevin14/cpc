@@ -4524,3 +4524,6 @@ cpc server listening on port 80
 [90mGET /media/market/default/default_small.jpg [33m404 [90m4ms[0m
 [90mGET /media/market/2013/10/13807925594023318_small.jpg [36m304 [90m1ms[0m
 [90mGET /media/market/2013/10/138079254083737298_small.jpg [36m304 [90m1ms[0m
+DEBUG: crashing child
+DEBUG: Starting child process with 'node app.js'
+cpc server listening on port 80
