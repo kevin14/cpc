@@ -10,7 +10,7 @@ var path = require('path');
 var app = express();
 
 // all environments
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 80);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.use(express.favicon());
@@ -50,7 +50,7 @@ app.post('/market/fabuSubmit',market.fabuSubmit);
 app.get('/chooseClass',market.chooseClass);
 app.get('/chooseSchool',market.chooseSchool);
 app.get('/chooseLocal',market.chooseLocal);
-
+app.post('chooseLocal',market.chooseLocal);
 //404页面 希望能用服务器去解决这件事情 因为这里还把css js等静态文件过滤了一下 不好不好
 // app.get('/*',common.pageNotFound);
 
