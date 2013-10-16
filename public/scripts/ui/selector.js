@@ -8,14 +8,19 @@
 				selector_title: "级联选择菜单",
 				selector_width: 200,
 				drag: true,
-				selector_detial_title: [],
+				submit_layer: 0,
+				selector_detail_title: [],
 				remember_data: [],
 				auto_remember_switch: true,
 				callback: function() {
 					return false;
 				}
 			}, options || {});
-			this.auto_remember_data = this.opt.defaultData.split(",");
+
+			if (this.opt.defaultData != "") {
+				this.auto_remember_data = this.opt.defaultData.split(",");
+			};
+
 			this.kSelector_data = [];
 			this._drawSelector();
 			return this;
@@ -27,14 +32,14 @@
 			$("body").append('<div id="kSelector"><div class="selector_title">' + this.opt.selector_title + '</div><div class="selector_info_text"></div><ul class="selector_ul clearfix"></ul><span class="kSelector_close">x</span></div>')
 
 			for (var i; i < this.opt.layer; i++) {
-				$(".selector_ul").append('<li class="kSelector_inner"><div class="detial_title">' + this.opt.selector_detial_title[i] + '</div></li>');
+				$(".selector_ul").append('<li class="kSelector_inner"><div class="detail_title">' + this.opt.selector_detail_title[i] + '</div></li>');
 			}
 			$(".kSelector_inner").css({
 				width: this.opt.selector_width + "px"
 			})
 
 			this.kSelector = $("#kSelector");
-			this.kSelector.append('<div style="text-align:center;"><span class="kSelector_submit btn btn-primary">确定</span></div>')
+			this.kSelector.append('<div style="text-align:center;"><span class="kSelector_submit btn btn-primary btn-disabled">确定</span></div>')
 
 			this.kSelector_submit = $(".kSelector_submit");
 			this.kSelector_info_text = $(".selector_info_text");
@@ -42,7 +47,7 @@
 			this.kSelector_close = this.kSelector.find(".kSelector_close");
 
 			if (this.opt.search_bar > 0) {
-				this.kSelector_ul.find("li:eq(" + (this.opt.search_bar - 1) + ") .detial_title").after('<input type="text" placeholder="在结果中检索" class="kSelector_search input-txt span2 search-query" >')
+				this.kSelector_ul.find("li:eq(" + (this.opt.search_bar - 1) + ") .detail_title").after('<input type="text" placeholder="在结果中检索" class="kSelector_search input-txt span2 search-query" >')
 				this.kSelector_search = $(".kSelector_search");
 				this._searchReg();
 			};
@@ -54,9 +59,10 @@
 			this._regEvent();
 			this._getData(1);
 		},
-		_getData: function(layer_count,ajax_data) {
-			ajax_data = ajax_data?ajax_data:"";
-			var self = this,key = this.opt.data_id;
+		_getData: function(layer_count, ajax_data) {
+			ajax_data = ajax_data ? ajax_data : "";
+			var self = this,
+				key = this.opt.data_id;
 			var data = {};
 			data[key] = ajax_data;
 
@@ -69,8 +75,7 @@
 					success: function(data) {
 						self._render(layer_count, data);
 					},
-					error: function(e) {
-					}
+					error: function(e) {}
 				})
 			} else {
 
@@ -84,12 +89,12 @@
 			self.kSelector_info_text.html();
 			for (var i = 0; i < data.length; i++) {
 				var attr_html = "";
-				for(var key in data[i]){
+				for (var key in data[i]) {
 					if (key != self.opt.data_id && key != self.opt.data_name) {
-						attr_html += ' '+key+'="'+data[i][key]+'" ';
+						attr_html += ' ' + key + '="' + data[i][key] + '" ';
 					};
 				}
-				this.kSelector_ul.find("li:eq(" + (layer_count - 1) + ")").append('<a '+self.opt.data_id+'=' + data[i][self.opt.data_id] + attr_html+'>' + data[i][self.opt.data_name] + '</a>');
+				this.kSelector_ul.find("li:eq(" + (layer_count - 1) + ")").append('<a ' + self.opt.data_id + '=' + data[i][self.opt.data_id] + attr_html + '>' + data[i][self.opt.data_name] + '</a>');
 			}
 
 			/*临时绑定click方法*/
@@ -98,10 +103,17 @@
 				$(this).addClass('selector_on');
 				self._setInfoTitle(layer_count);
 				var ajax_data = $(this).attr(self.opt.data_id);
+				if (self.opt.submit_layer == layer_count || self.opt.submit_layer == 0) {
+					self.kSelector_submit.removeClass('btn-disabled');
+					self._submitRegEvent(true);
+				} else {
+					self.kSelector_submit.addClass('btn-disabled');
+					self._submitRegEvent(false);
+				}
 				if (layer_count != self.opt.layer) {
-					self._getData(layer_count + 1,ajax_data);
+					self._getData(layer_count + 1, ajax_data);
 				};
-			}).bind('dblclick',function(){
+			}).bind('dblclick', function() {
 				self.kSelector_submit.click();
 			})
 
@@ -122,29 +134,41 @@
 				return false;
 			};
 		},
-		destory: function() {
+		_destory: function() {
 			this.kSelector.remove();
+		},
+		_submitRegEvent: function(to_bind) {
+			var self = this;
+			if (to_bind) {
+				this.kSelector_submit.unbind().bind('click', function() {
+					self.kSelector_data = [];
+					var li_length = self.kSelector_ul.find("li").length;
+					for (var i = 0; i < li_length; i++) {
+						var code_data = self.kSelector_ul.find("li:eq(" + i + ") a.selector_on").attr(self.opt.data_id);
+						self.kSelector_data.push({
+							code: code_data,
+							value: self.kSelector_ul.find("li:eq(" + i + ") a.selector_on").html()
+						})
+						self.opt.remember_data.push(code_data);
+					}
+					self.opt.remember_data = self.opt.remember_data.join(",");
+					self.opt.callback(self.kSelector_data, self.opt.remember_data);
+					self._destory();
+				})
+			} else {
+				this.kSelector_submit.unbind();
+			}
 		},
 		_regEvent: function(layer_count) {
 			var self = this;
 			this.kSelector_close.bind('click', function() {
-				self.destory();
+				self._destory();
 			})
-			this.kSelector_submit.bind('click', function() {
-				self.kSelector_data = [];
-				var li_length = self.kSelector_ul.find("li").length;
-				for (var i = 0; i < li_length; i++) {
-					var code_data = self.kSelector_ul.find("li:eq(" + i + ") a.selector_on").attr(self.opt.data_id);
-					
-					self.kSelector_data.push({
-						code: code_data,
-						value: self.kSelector_ul.find("li:eq(" + i + ") a.selector_on").html()
-					})
-					self.opt.remember_data.push(code_data);
-				}
-				self.opt.remember_data = self.opt.remember_data.join(",");
-				self.opt.callback(self.kSelector_data, self.opt.remember_data);
-				self.destory();
+			this.kSelector.bind('click', function (e) {
+				self._stopBubble(e);
+			})
+			$(document).bind('click',function (e){
+				self._destory();
 			})
 		},
 		_searchReg: function() {
@@ -168,13 +192,20 @@
 		_autoRemember: function(i) {
 			var self = this;
 			this.kSelector_ul.find("li:eq(" + i + ") a").each(function() {
-				if ($(this).attr("kSelector-data") == self.auto_remember_data[i]) {
+				if ($(this).attr(self.opt.data_id) == self.auto_remember_data[i]) {
 					$(this).click();
 				};
 			})
 			if (i == this.opt.layer - 1) {
 				this.opt.auto_remember_switch = false;
 			};
+		},
+		_stopBubble: function(e) {
+			if (e && e.stopPropagation) {
+				e.stopPropagation(); //w3c
+			} else {
+				window.event.cancelBubble = true; //IE
+			}
 		}
 	}
 	return Selector;

@@ -21,32 +21,24 @@
 			return this;
 		},
 		_drawSelector: function() {
-			var i = 0,
-				_html = "",
+			var i = 0,_html = "",
 				self = this;
 			$("body").append('<div id="kSelector"><div class="selector_title">' + this.opt.selector_title + '</div><div class="selector_info_text"></div><ul class="selector_ul clearfix"></ul><span class="kSelector_close">x</span></div>')
-
 			for (var i; i < this.opt.layer; i++) {
 				$(".selector_ul").append('<li class="kSelector_inner"><div class="detial_title">' + this.opt.selector_detial_title[i] + '</div></li>');
 			}
-			$(".kSelector_inner").css({
-				width: this.opt.selector_width + "px"
-			})
-
+			$(".kSelector_inner").css({width: this.opt.selector_width + "px"})
 			this.kSelector = $("#kSelector");
 			this.kSelector.append('<div style="text-align:center;"><span class="kSelector_submit btn btn-primary">确定</span></div>')
-
 			this.kSelector_submit = $(".kSelector_submit");
 			this.kSelector_info_text = $(".selector_info_text");
 			this.kSelector_ul = $("#kSelector .selector_ul");
 			this.kSelector_close = this.kSelector.find(".kSelector_close");
-
 			if (this.opt.search_bar > 0) {
 				this.kSelector_ul.find("li:eq(" + (this.opt.search_bar - 1) + ") .detial_title").after('<input type="text" placeholder="在结果中检索" class="kSelector_search input-txt span2 search-query" >')
 				this.kSelector_search = $(".kSelector_search");
 				this._searchReg();
 			};
-
 			this.kSelector.css({
 				'margin-left': -$("#kSelector").outerWidth() / 2 + "px"
 			})
@@ -122,19 +114,20 @@
 				return false;
 			};
 		},
-		_destory: function() {
+		destory: function() {
 			this.kSelector.remove();
 		},
 		_regEvent: function(layer_count) {
 			var self = this;
 			this.kSelector_close.bind('click', function() {
-				self._destory();
+				self.destory();
 			})
 			this.kSelector_submit.bind('click', function() {
 				self.kSelector_data = [];
 				var li_length = self.kSelector_ul.find("li").length;
 				for (var i = 0; i < li_length; i++) {
-					var code_data = self.kSelector_ul.find("li:eq(" + i + ") a.selector_on").attr("kSelector-data");
+					var code_data = self.kSelector_ul.find("li:eq(" + i + ") a.selector_on").attr(self.opt.data_id);
+					
 					self.kSelector_data.push({
 						code: code_data,
 						value: self.kSelector_ul.find("li:eq(" + i + ") a.selector_on").html()
@@ -143,7 +136,7 @@
 				}
 				self.opt.remember_data = self.opt.remember_data.join(",");
 				self.opt.callback(self.kSelector_data, self.opt.remember_data);
-				self._destory();
+				self.destory();
 			})
 		},
 		_searchReg: function() {

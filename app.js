@@ -39,7 +39,7 @@ app.post('/user/login_in',user.login_in);//登陸驗證
 app.get('/user/log_out',user.log_out);//登陸驗證
 app.post('/user/reg_in',user.reg_in);//注册
 app.get('/schoolChoose',common.schoolChoose);//切換学校
-
+app.get('/emailtest',user.emailtest);
 
 //属于market的route
 app.get('/',market.index);
